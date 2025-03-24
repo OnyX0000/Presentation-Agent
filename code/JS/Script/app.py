@@ -25,36 +25,30 @@ def main():
         if not st.session_state.state.pdf_path:
             st.session_state.initializer.initialize(uploaded_file)
         
-        # 페이지 선택
-        page_number = st.number_input("페이지 선택", 1, st.session_state.state.total_pages, 1)
+        # 모든 페이지의 스크립트 생성 버튼
+        if st.button("모든 페이지 발표 대본 생성"):
+            with st.spinner("발표 대본을 생성하는 중..."):
+                for page_idx in range(st.session_state.state.total_pages):
+                    script = st.session_state.generator.generate_script(page_idx)
+                    st.session_state.state.scripts.append(script)
+                st.success("모든 페이지의 발표 대본이 생성되었습니다!")
         
-        # 현재 페이지 정보 표시
-        if page_number <= len(st.session_state.state.data):
-            page_data = st.session_state.state.data[page_number - 1]
+        # 모든 페이지의 이미지와 스크립트 표시
+        for page_idx in range(st.session_state.state.total_pages):
+            st.markdown(f"### 페이지 {page_idx + 1}")
             
-            # 텍스트 표시
-            st.subheader("페이지 텍스트")
-            st.text(page_data["text"])
+            # 페이지 PDF 이미지 표시
+            st.image(f"data:image/png;base64,{st.session_state.state.page_images[page_idx]}", 
+                    use_column_width=True)
             
-            # 이미지 표시
-            if page_data["images"]:
-                st.subheader("페이지 이미지")
-                for img in page_data["images"]:
-                    st.image(f"data:image/jpeg;base64,{img['image']}")
+            # 해당 페이지의 발표 대본 표시
+            if len(st.session_state.state.scripts) > page_idx:
+                st.markdown("#### 발표 대본")
+                st.write(st.session_state.state.scripts[page_idx])
+            else:
+                st.info("이 페이지의 발표 대본이 아직 생성되지 않았습니다.")
             
-            # 발표 대본 생성 버튼
-            if st.button("발표 대본 생성"):
-                with st.spinner("발표 대본을 생성하는 중..."):
-                    script = st.session_state.generator.generate_script(page_number - 1)
-                    st.subheader("생성된 발표 대본")
-                    st.write(script)
-            
-            # 이전 발표 대본 표시
-            if st.session_state.state.scripts:
-                st.subheader("이전 발표 대본")
-                for i, script in enumerate(st.session_state.state.scripts):
-                    st.write(f"페이지 {i+1} 대본:")
-                    st.write(script)
+            st.markdown("---")  # 구분선 추가
 
 if __name__ == "__main__":
     main()

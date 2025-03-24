@@ -17,6 +17,7 @@ class PDFState:
         self.total_pages: int = 0
         self.scripts: List[str] = []
         self.temp_file: Optional[str] = None
+        self.page_images: List[str] = []  # 페이지별 PDF 이미지 저장
         
     def initialize_pdf(self, uploaded_file):
         """PDF 파일 초기화"""
@@ -31,6 +32,15 @@ class PDFState:
         self.current_page = 0
         self.data = []
         self.scripts = []
+        self.page_images = []
+        
+        # 모든 페이지의 이미지 미리 생성
+        for page_num in range(self.total_pages):
+            page = self.doc[page_num]
+            pix = page.get_pixmap(matrix=fitz.Matrix(300/72, 300/72))  # 300 DPI
+            img_bytes = pix.tobytes("png")
+            self.page_images.append(self.convert_image_to_base64(img_bytes))
+            pix = None  # 메모리 해제
         
     def cleanup(self):
         """임시 파일 정리"""
