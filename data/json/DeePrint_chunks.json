@@ -1,0 +1,2518 @@
+[
+    {
+        "page": 1,
+        "text": "김지민, 박형빈, 정재식\nWanted PotenUp 3rd Project\n2025.03.05.\n01. 프로젝트 개요\n02. Project Flow\n03. 서비스 구현",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/3",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 1,
+                                "bbox": {
+                                    "l": 591.654,
+                                    "t": 235.678,
+                                    "r": 848.323,
+                                    "b": 208.76300000000003,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    13
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/4",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 1,
+                                "bbox": {
+                                    "l": 1182.053,
+                                    "t": 723.565,
+                                    "r": 1386.719,
+                                    "b": 655.378,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    26
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/5",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 1,
+                                "bbox": {
+                                    "l": 1251.97,
+                                    "t": 109.19499999999994,
+                                    "r": 1373.149,
+                                    "b": 84.35400000000004,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/7",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 2,
+                                "bbox": {
+                                    "l": 392.09,
+                                    "t": 500.679,
+                                    "r": 757.96,
+                                    "b": 450.025,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/8",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 2,
+                                "bbox": {
+                                    "l": 392.09,
+                                    "t": 359.347,
+                                    "r": 786.23,
+                                    "b": 308.692,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    16
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/9",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 2,
+                                "bbox": {
+                                    "l": 392.09,
+                                    "t": 218.014,
+                                    "r": 717.405,
+                                    "b": 167.36,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    10
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 2,
+        "text": "HTP 검사란?\nHouse(집), Tree(나무), Person(사람)의 세\n가지 그림을 그리게 하여 개인의 성격, 정서 상\n태, 대인 관계 등을 평가하는 투사적 심리 검사\n특히 아동 및 청소년의 심리 상태를 파악하거나,\n성인의 무의식적 감정과 스트레스를 이해하는\n데 유용하게 사용",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/13",
+                        "parent": {
+                            "$ref": "#/groups/0"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 3,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 480.119,
+                                    "r": 1304.402,
+                                    "b": 455.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    33
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/14",
+                        "parent": {
+                            "$ref": "#/groups/0"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 3,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 405.119,
+                                    "r": 1298.972,
+                                    "b": 380.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    26
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/15",
+                        "parent": {
+                            "$ref": "#/groups/0"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 3,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 330.119,
+                                    "r": 1298.972,
+                                    "b": 305.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    26
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/16",
+                        "parent": {
+                            "$ref": "#/groups/0"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 3,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 255.11900000000003,
+                                    "r": 1315.142,
+                                    "b": 230.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    26
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/17",
+                        "parent": {
+                            "$ref": "#/groups/0"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 3,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 180.11900000000003,
+                                    "r": 1296.332,
+                                    "b": 155.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/18",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 3,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 105.11900000000003,
+                                    "r": 1011.573,
+                                    "b": 80.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    9
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "HTP 검사란?"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 3,
+        "text": "HTP 검사의 한계\n주관적 해석의 가능성\n표준화 부족\n문화적 차이\n피검사자의 의도적 왜곡\n기술적 한계",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/27",
+                        "parent": {
+                            "$ref": "#/groups/1"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 4,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 454.722,
+                                    "r": 1056.873,
+                                    "b": 430.108,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/28",
+                        "parent": {
+                            "$ref": "#/groups/1"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 4,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 379.722,
+                                    "r": 959.793,
+                                    "b": 355.108,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    6
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/29",
+                        "parent": {
+                            "$ref": "#/groups/1"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 4,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 304.722,
+                                    "r": 959.793,
+                                    "b": 280.10799999999995,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    6
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/30",
+                        "parent": {
+                            "$ref": "#/groups/1"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 4,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 229.72199999999998,
+                                    "r": 1079.523,
+                                    "b": 205.10799999999995,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    12
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/31",
+                        "parent": {
+                            "$ref": "#/groups/1"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 4,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 154.72199999999998,
+                                    "r": 959.793,
+                                    "b": 130.10799999999995,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    6
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "HTP 검사의 한계"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 4,
+        "text": "AI Hub 데이터\nAI 기반 아동 미술심리 진단을 위한 그림 데이터 구축\n다양한 연령대(7~13)와 성별의 아동 7,000명으로부터 수집한\n4개 HTP 분류(집, 나무, 여자사람, 남자사람) 그림\n심리 해석이 포함된 의료 데이터가 아닌 객체 인식을 위한 그림 데이터\n각 HTP 분류 별 Train (11200개), Validation (1400개) 데\n이터를 포함하고 있고, Test 셋은 정책 상 다운로드 불가능.",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/50",
+                        "parent": {
+                            "$ref": "#/groups/2"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 6,
+                                "bbox": {
+                                    "l": 767.59,
+                                    "t": 464.758,
+                                    "r": 1264.829,
+                                    "b": 441.787,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    30
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/51",
+                        "parent": {
+                            "$ref": "#/groups/2"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 6,
+                                "bbox": {
+                                    "l": 767.59,
+                                    "t": 416.008,
+                                    "r": 1352.317,
+                                    "b": 393.037,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    36
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/52",
+                        "parent": {
+                            "$ref": "#/groups/2"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 6,
+                                "bbox": {
+                                    "l": 767.59,
+                                    "t": 367.258,
+                                    "r": 1240.221,
+                                    "b": 344.287,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    31
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/53",
+                        "parent": {
+                            "$ref": "#/groups/2"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 6,
+                                "bbox": {
+                                    "l": 767.59,
+                                    "t": 318.508,
+                                    "r": 1350.889,
+                                    "b": 246.78700000000003,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    38
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/54",
+                        "parent": {
+                            "$ref": "#/groups/2"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 6,
+                                "bbox": {
+                                    "l": 767.59,
+                                    "t": 221.00800000000004,
+                                    "r": 1345.465,
+                                    "b": 198.03700000000003,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    47
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/55",
+                        "parent": {
+                            "$ref": "#/groups/2"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 6,
+                                "bbox": {
+                                    "l": 767.59,
+                                    "t": 172.25800000000004,
+                                    "r": 1323.984,
+                                    "b": 149.28700000000003,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    35
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "AI Hub 데이터"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 5,
+        "text": "학습 데이터 정제 (JSON → Label)\n원본 (JSON)\nYOLO Format\nmeta\n데이터 정보 (code, age, sex)\nannotations\nbbox (x, y, w, h)\nshape_description\nprop_obj_img\nprop_obj_cls\nclass_index\nxc = (x + w/2) / image_width\nyc = (y + h/2) / image_height\nwidth = w / image_width\nheight = h / image_height\n모델 학습 및 평가\nHTP 항목별 모델 구축\nYOLO11n  학습\nmAP (mean Average Precision)\nIoU :  Intersection over Union\n=> 실제와 탐지 영역의 교집합 / 합집합",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/66",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 214.523,
+                                    "t": 523.524,
+                                    "r": 482.167,
+                                    "b": 477.582,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    9
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/67",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 935.878,
+                                    "t": 523.524,
+                                    "r": 1256.658,
+                                    "b": 477.582,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/68",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 165.244,
+                                    "t": 412.921,
+                                    "r": 231.394,
+                                    "b": 388.307,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    4
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/69",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 216.244,
+                                    "t": 367.921,
+                                    "r": 530.471,
+                                    "b": 343.307,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/70",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 165.244,
+                                    "t": 322.921,
+                                    "r": 315.304,
+                                    "b": 298.307,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/71",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 216.244,
+                                    "t": 277.92100000000005,
+                                    "r": 402.634,
+                                    "b": 253.30700000000002,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    17
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/72",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 165.244,
+                                    "t": 232.92100000000005,
+                                    "r": 395.944,
+                                    "b": 208.30700000000002,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    17
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/73",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 216.244,
+                                    "t": 187.92100000000005,
+                                    "r": 395.985,
+                                    "b": 163.30700000000002,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    12
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/74",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 216.244,
+                                    "t": 142.92100000000005,
+                                    "r": 378.124,
+                                    "b": 118.30700000000002,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    12
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/75",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 870.578,
+                                    "t": 407.845,
+                                    "r": 1017.008,
+                                    "b": 383.231,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/76",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 870.578,
+                                    "t": 347.845,
+                                    "r": 1228.573,
+                                    "b": 323.231,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    28
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/77",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 870.578,
+                                    "t": 287.845,
+                                    "r": 1237.02,
+                                    "b": 263.231,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    29
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/78",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 870.578,
+                                    "t": 227.84500000000003,
+                                    "r": 1183.118,
+                                    "b": 203.231,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/79",
+                        "parent": {
+                            "$ref": "#/groups/3"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 8,
+                                "bbox": {
+                                    "l": 870.578,
+                                    "t": 167.84500000000003,
+                                    "r": 1196.918,
+                                    "b": 143.231,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    25
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/81",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 9,
+                                "bbox": {
+                                    "l": 96.762,
+                                    "t": 665.165,
+                                    "r": 533.662,
+                                    "b": 602.221,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    10
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/82",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 9,
+                                "bbox": {
+                                    "l": 255.229,
+                                    "t": 493.995,
+                                    "r": 676.63,
+                                    "b": 446.786,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    13
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/83",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 9,
+                                "bbox": {
+                                    "l": 255.229,
+                                    "t": 346.794,
+                                    "r": 567.139,
+                                    "b": 299.585,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/84",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 9,
+                                "bbox": {
+                                    "l": 255.229,
+                                    "t": 200.19600000000003,
+                                    "r": 899.215,
+                                    "b": 152.98699999999997,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    28
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/87",
+                        "parent": {
+                            "$ref": "#/groups/4"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 137.59,
+                                    "t": 542.012,
+                                    "r": 453.382,
+                                    "b": 520.464,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    30
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/88",
+                        "parent": {
+                            "$ref": "#/groups/4"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 125.403,
+                                    "t": 511.262,
+                                    "r": 453.43,
+                                    "b": 489.714,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "학습 데이터 정제 (JSON → Label)"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 6,
+        "text": "mAP50 (mean Average Precision)\nIoU가 0.5 이상일 때의 평균 정밀도(Average Precision, AP)를 계산한 값이다.\n즉, 검출한 바운딩 박스가 실제 객체와 2/3 이상 겹치면 정답으로 간주하고 계산한다.\n객체 검출 성능을 대략적으로 평가할 때 많이 사용된다",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/90",
+                        "parent": {
+                            "$ref": "#/groups/5"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 159.454,
+                                    "t": 399.927,
+                                    "r": 655.314,
+                                    "b": 334.022,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    55
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/91",
+                        "parent": {
+                            "$ref": "#/groups/5"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 159.454,
+                                    "t": 300.927,
+                                    "r": 655.255,
+                                    "b": 235.02199999999993,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    48
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/92",
+                        "parent": {
+                            "$ref": "#/groups/5"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 159.454,
+                                    "t": 201.92700000000002,
+                                    "r": 522.069,
+                                    "b": 185.52199999999993,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    29
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "mAP50 (mean Average Precision)"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 7,
+        "text": "mAP50-95 (mean Average Precision)\nIoU 임계값을 0.50에서 0.95까지 0.05 간격(0.50, 0.55, ..., 0.95) 으로\n변화시키면서 각각의 AP를 구하고, 그 평균을 낸 값이다.\n즉, mAP50(B), mAP55(B), ..., mAP95(B) 의 평균이 된다.\n높은 IoU 임계값(예: 0.90, 0.95)에서는 더 정확한 바운딩 박스를 요구하므 로, 모델이 실제로 얼마나 정밀하게 검출하는지를 더 엄격하게 평가하는 지 표이다.\nimgsz 640 → 1280으로 증가시켜 성능을 향상시킴\nepochs를 50 → 30으로 낮추어 학습속도를 향상시킴",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/94",
+                        "parent": {
+                            "$ref": "#/groups/6"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 839.642,
+                                    "t": 399.927,
+                                    "r": 1328.884,
+                                    "b": 383.522,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    56
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/95",
+                        "parent": {
+                            "$ref": "#/groups/6"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 839.642,
+                                    "t": 350.427,
+                                    "r": 1217.67,
+                                    "b": 334.022,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    32
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/96",
+                        "parent": {
+                            "$ref": "#/groups/6"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 839.642,
+                                    "t": 300.927,
+                                    "r": 1251.654,
+                                    "b": 284.52199999999993,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    46
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/97",
+                        "parent": {
+                            "$ref": "#/groups/6"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 10,
+                                "bbox": {
+                                    "l": 839.642,
+                                    "t": 251.42700000000002,
+                                    "r": 1343.14,
+                                    "b": 136.02199999999993,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    93
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/100",
+                        "parent": {
+                            "$ref": "#/groups/7"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 11,
+                                "bbox": {
+                                    "l": 823.793,
+                                    "t": 648.778,
+                                    "r": 1248.886,
+                                    "b": 629.093,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    32
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/101",
+                        "parent": {
+                            "$ref": "#/groups/7"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 11,
+                                "bbox": {
+                                    "l": 823.793,
+                                    "t": 589.528,
+                                    "r": 1261.648,
+                                    "b": 569.843,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    32
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "mAP50-95 (mean Average Precision)"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 8,
+        "text": "mAP50-95 (mean Average Precision)\nFemale, imgsz = 640,  epochs = 50.mAP50(B) = 0.975. Female, imgsz = 640,  epochs = 50.mAP50-95(B) = 0.808. Female, THEMA.THEMA = Female. Female, imgsz = 1280,  epochs = 30.mAP50(B) = 0.991 (+0.016). Female, imgsz = 1280,  epochs = 30.mAP50-95(B) = 0.864 (+0.056). Male, imgsz = 640,  epochs = 50.mAP50(B) = 0.974. Male, imgsz = 640,  epochs = 50.mAP50-95(B) = 0.811. Male, THEMA.THEMA = Male. Male, imgsz = 1280,  epochs = 30.mAP50(B) = 0.991 (+0.017). Male, imgsz = 1280,  epochs = 30.mAP50-95(B) = 0.862 (+0.051). House, imgsz = 640,  epochs = 50.mAP50(B) = 0.975. House, imgsz = 640,  epochs = 50.mAP50-95(B) = 0.884. House, THEMA.THEMA = House. House, imgsz = 1280,  epochs = 30.mAP50(B) = 0.988 (+0.013). House, imgsz = 1280,  epochs = 30.mAP50-95(B) = 0.925 (+0.041). Tree, imgsz = 640,  epochs = 50.mAP50(B) = 0.973. Tree, imgsz = 640,  epochs = 50.mAP50-95(B) = 0.844. Tree, THEMA.THEMA = Tree. Tree, imgsz = 1280,  epochs = 30.mAP50(B) = 0.983 (+0.010). Tree, imgsz = 1280,  epochs = 30.mAP50-95(B) = 0.874 (+0.030)",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/tables/0",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "table",
+                        "prov": [
+                            {
+                                "page_no": 11,
+                                "bbox": {
+                                    "l": 80.19461822509766,
+                                    "t": 525.183837890625,
+                                    "r": 1360.462646484375,
+                                    "b": 137.97039794921875,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    0
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "mAP50-95 (mean Average Precision)"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 9,
+        "text": "mAP50-95 (mean Average Precision)\n어떤 개체(클래스)가 그려졌는지\n몇 개나 그려졌는지\n전체 이미지 크기 대비 어느정도인지\n해당 개체가 오브젝트에서 어느정도 크기인지\n위 결과들을 해석하는 레퍼런스 탐색 및 구현",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/137",
+                        "parent": {
+                            "$ref": "#/groups/8"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 13,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 441.578,
+                                    "r": 1167.182,
+                                    "b": 416.964,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    17
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/138",
+                        "parent": {
+                            "$ref": "#/groups/8"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 13,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 381.578,
+                                    "r": 1034.223,
+                                    "b": 356.964,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    10
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/139",
+                        "parent": {
+                            "$ref": "#/groups/8"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 13,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 321.578,
+                                    "r": 1205.732,
+                                    "b": 296.96399999999994,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    19
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/140",
+                        "parent": {
+                            "$ref": "#/groups/8"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 13,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 261.578,
+                                    "r": 1296.332,
+                                    "b": 236.96399999999994,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    23
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/141",
+                        "parent": {
+                            "$ref": "#/groups/8"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 13,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 201.57799999999997,
+                                    "r": 1286.642,
+                                    "b": 176.96399999999994,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    24
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "mAP50-95 (mean Average Precision)"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 10,
+        "text": "House (집)\n✔\n집전체에 대한 평가\n그림에서 집전체 의 위치가 하단에 치우쳐져 있다. 이는 우 울, 자존감 문제, 정서불안, 열등감을 표현한 것으로 볼 수 있\n다.\n연기에 대한 평가\n✔\n그림에서 Smoke 의 존재 여부가 TRUE. 이는 우울, 자존감 문제을 표현한 것으로 볼 수 있다.\n✔ 길에 대한 평가\n그림에서 Fence 의 존재 여부가 TRUE. 이는 사회불안, Avoidance, 자존감 문제, 정서불안, 열등감을 표현한 것으 로 볼 수 있다.",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/145",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 114.244,
+                                    "t": 469.748,
+                                    "r": 126.532,
+                                    "b": 457.772,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    1
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/146",
+                        "parent": {
+                            "$ref": "#/groups/9"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 137.86,
+                                    "t": 483.5,
+                                    "r": 298.756,
+                                    "b": 463.809,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    10
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/147",
+                        "parent": {
+                            "$ref": "#/groups/9"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 155.037,
+                                    "t": 447.5,
+                                    "r": 632.878,
+                                    "b": 391.809,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    68
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/148",
+                        "parent": {
+                            "$ref": "#/groups/9"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 155.037,
+                                    "t": 375.5,
+                                    "r": 178.989,
+                                    "b": 355.809,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    2
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/149",
+                        "parent": {
+                            "$ref": "#/groups/9"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 137.86,
+                                    "t": 339.5,
+                                    "r": 280.636,
+                                    "b": 319.809,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    9
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/150",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 114.244,
+                                    "t": 325.748,
+                                    "r": 126.532,
+                                    "b": 313.772,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    1
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/151",
+                        "parent": {
+                            "$ref": "#/groups/10"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 155.037,
+                                    "t": 303.5,
+                                    "r": 631.126,
+                                    "b": 247.80899999999997,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    56
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/152",
+                        "parent": {
+                            "$ref": "#/groups/10"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 114.244,
+                                    "t": 231.5,
+                                    "r": 262.516,
+                                    "b": 205.77199999999993,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    10
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/153",
+                        "parent": {
+                            "$ref": "#/groups/10"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 155.037,
+                                    "t": 195.5,
+                                    "r": 628.654,
+                                    "b": 103.80899999999997,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    81
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "House (집)"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 11,
+        "text": "Male (남자사람)\n✔ 사람전체에 대한 평가\n그림에서 사람전체 의 위치가 하단에 치우쳐져 있다. 이는 사\n회 불안, 우울, 자존감 문제, 정서불안, 열등감을 표현한 것으로 볼 수 있다.\n상체에 대한 평가\n✔\n현재 버전에서는 이 항목에 대한 평가 정보가 없습니다.\n✔ 단추에 대한 평가\n그림에서 Button 의 크기가 지나치게 크다. 이는 애정결핍, 퇴행을 표현한 것으로 볼 수 있다.\n객관적이고 일관된 분석 가능\n자동화된 이미지 해석을 통한 시간 단축\n데이터 기반 해석 가능\n전문가와 보완적인 역할 기대",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/155",
+                        "parent": {
+                            "$ref": "#/groups/11"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 819.578,
+                                    "t": 483.35,
+                                    "r": 1022.211,
+                                    "b": 457.622,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    13
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/156",
+                        "parent": {
+                            "$ref": "#/groups/11"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 860.371,
+                                    "t": 440.6,
+                                    "r": 1342.556,
+                                    "b": 420.909,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    33
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/157",
+                        "parent": {
+                            "$ref": "#/groups/11"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 860.371,
+                                    "t": 397.85,
+                                    "r": 1355.828,
+                                    "b": 335.409,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    44
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/158",
+                        "parent": {
+                            "$ref": "#/groups/11"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 843.194,
+                                    "t": 312.35,
+                                    "r": 985.97,
+                                    "b": 292.659,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    9
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/159",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 819.578,
+                                    "t": 298.598,
+                                    "r": 831.866,
+                                    "b": 286.62200000000007,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    1
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/160",
+                        "parent": {
+                            "$ref": "#/groups/12"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 860.371,
+                                    "t": 269.6,
+                                    "r": 1301.132,
+                                    "b": 249.909,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    30
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/161",
+                        "parent": {
+                            "$ref": "#/groups/12"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 819.578,
+                                    "t": 226.85000000000002,
+                                    "r": 985.97,
+                                    "b": 201.12200000000007,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    11
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/162",
+                        "parent": {
+                            "$ref": "#/groups/12"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 14,
+                                "bbox": {
+                                    "l": 860.371,
+                                    "t": 184.10000000000002,
+                                    "r": 1338.02,
+                                    "b": 121.65899999999999,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    55
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/167",
+                        "parent": {
+                            "$ref": "#/groups/13"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 15,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 480.119,
+                                    "r": 1131.302,
+                                    "b": 455.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    15
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/168",
+                        "parent": {
+                            "$ref": "#/groups/13"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 15,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 405.119,
+                                    "r": 1241.347,
+                                    "b": 380.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    21
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/169",
+                        "parent": {
+                            "$ref": "#/groups/13"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 15,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 330.119,
+                                    "r": 1063.353,
+                                    "b": 305.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    12
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/170",
+                        "parent": {
+                            "$ref": "#/groups/13"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "list_item",
+                        "prov": [
+                            {
+                                "page_no": 15,
+                                "bbox": {
+                                    "l": 839.583,
+                                    "t": 255.11900000000003,
+                                    "r": 1131.302,
+                                    "b": 230.505,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    15
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "Male (남자사람)"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 12,
+        "text": "Gemini API 활용 과 RAG 적용\nYOLO 모델 HTP 검사 결과를 채점 기준별 점수화\nGemini API 점수화된 데이터를 자연스럽고 이해하기 쉬운 문장으로 변환\nRAG 적용 더 신뢰도 높은 심리 평가 문장 생성",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/173",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 16,
+                                "bbox": {
+                                    "l": 71.203,
+                                    "t": 454.665,
+                                    "r": 442.546,
+                                    "b": 270.72299999999996,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    29
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/174",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 16,
+                                "bbox": {
+                                    "l": 540.813,
+                                    "t": 454.665,
+                                    "r": 899.165,
+                                    "b": 132.72299999999996,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    42
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/175",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 16,
+                                "bbox": {
+                                    "l": 991.32,
+                                    "t": 454.665,
+                                    "r": 1375.653,
+                                    "b": 270.72299999999996,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    27
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "Gemini API 활용 과 RAG 적용"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 13,
+        "text": "이미지 업로드 및  해석 화면\n[테마 선택 → 이미지 업로드]\n[모두 보기 모드]\n[선택 모드]\n[전체 요약 보기]\nQ & A",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/184",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 17,
+                                "bbox": {
+                                    "l": 975.023,
+                                    "t": 104.70100000000002,
+                                    "r": 1222.152,
+                                    "b": 83.15300000000002,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    17
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/200",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 19,
+                                "bbox": {
+                                    "l": 975.012,
+                                    "t": 162.02700000000004,
+                                    "r": 1113.977,
+                                    "b": 140.47900000000004,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    10
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/206",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 20,
+                                "bbox": {
+                                    "l": 975.012,
+                                    "t": 162.02700000000004,
+                                    "r": 1074.349,
+                                    "b": 140.47900000000004,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    7
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/209",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 21,
+                                "bbox": {
+                                    "l": 975.012,
+                                    "t": 182.83299999999997,
+                                    "r": 1116.664,
+                                    "b": 161.28499999999997,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    10
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/210",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 22,
+                                "bbox": {
+                                    "l": 635.437,
+                                    "t": 444.381,
+                                    "r": 804.54,
+                                    "b": 378.126,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    5
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "이미지 업로드 및  해석 화면"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    },
+    {
+        "page": 14,
+        "text": "4월에 다시 만나요 U\n다 음 발표는?\n언제였지...?",
+        "metadata": {
+            "source": "C:/wanted/Lang/Presentation-Agent/data/pdf/DeePrint.pdf",
+            "dl_meta": {
+                "schema_name": "docling_core.transforms.chunker.DocMeta",
+                "version": "1.0.0",
+                "doc_items": [
+                    {
+                        "self_ref": "#/texts/212",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 23,
+                                "bbox": {
+                                    "l": 632.699,
+                                    "t": 311.731,
+                                    "r": 807.279,
+                                    "b": 279.154,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    8
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "self_ref": "#/texts/213",
+                        "parent": {
+                            "$ref": "#/body"
+                        },
+                        "children": [],
+                        "content_layer": "body",
+                        "label": "text",
+                        "prov": [
+                            {
+                                "page_no": 23,
+                                "bbox": {
+                                    "l": 663.947,
+                                    "t": 245.55099999999993,
+                                    "r": 776.027,
+                                    "b": 220.937,
+                                    "coord_origin": "BOTTOMLEFT"
+                                },
+                                "charspan": [
+                                    0,
+                                    8
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "headings": [
+                    "4월에 다시 만나요 U"
+                ],
+                "origin": {
+                    "mimetype": "application/pdf",
+                    "binary_hash": 13834601953636316739,
+                    "filename": "DeePrint.pdf"
+                }
+            }
+        }
+    }
+]
