@@ -1,34 +1,34 @@
-# upload_app.py
-import streamlit as st
-import time
-
-st.title("발표 자료를 업로드하세요")
-
-# 파일 업로드 버튼
-uploaded_file = st.file_uploader("파일 업로드", type=["pdf", "pptx", "docx"])
-
-if uploaded_file:
-    st.write("파일이 업로드되었습니다. 처리 중...")
-    with st.spinner("Loading..."):
-        time.sleep(3)  # 파일 처리 시뮬레이션
-    st.success("파일 업로드 완료!")
-
-## visualization_app.py
+# # upload_app.py
 # import streamlit as st
-# from PIL import Image
+# import time
 
-# st.title("발표 자료 처리 완료")
+# st.title("발표 자료를 업로드하세요")
 
-# # 예제 이미지 표시
-# image = Image.open("../../data/0.jpg")  # 적절한 이미지 파일로 변경 필요
-# st.image(image, caption="프로젝트 설계", use_container_width=True)
+# # 파일 업로드 버튼
+# uploaded_file = st.file_uploader("파일 업로드", type=["pdf", "pptx", "docx"])
 
-# st.markdown("### 2. 프로젝트 설계")
-# st.markdown("지금부터 프로젝트 설계에 대해 설명하겠습니다.")
-# st.markdown("---")
+# if uploaded_file:
+#     st.write("파일이 업로드되었습니다. 처리 중...")
+#     with st.spinner("Loading..."):
+#         time.sleep(3)  # 파일 처리 시뮬레이션
+#     st.success("파일 업로드 완료!")
 
-# # 오디오/비디오 시뮬레이션 (실제 파일이 있다면 변경 가능)
-# st.audio("../../data/1000.wav")  # 적절한 오디오 파일로 변경 필요
+# visualization_app.py
+import streamlit as st
+from PIL import Image
+
+st.title("발표 자료 처리 완료")
+
+# 예제 이미지 표시
+image = Image.open("../../data/0.jpg")  # 적절한 이미지 파일로 변경 필요
+st.image(image, caption="프로젝트 설계", use_container_width=True)
+
+st.markdown("### 2. 프로젝트 설계")
+st.markdown("지금부터 프로젝트 설계에 대해 설명하겠습니다.")
+st.markdown("---")
+
+# 오디오/비디오 시뮬레이션 (실제 파일이 있다면 변경 가능)
+st.audio("../../data/1000.wav")  # 적절한 오디오 파일로 변경 필요
 
 ## download_app.py
 # import streamlit as st

@@ -1,9 +1,6 @@
 *.pdf
 .env
 *.txt
-<<<<<<< HEAD
-*.pptx
-=======
 *.pptx
 model/ 
->>>>>>> origin/main
+
