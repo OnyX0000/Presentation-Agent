@@ -4,7 +4,7 @@ from initializer import PDFInitializer
 from script_generator import ScriptGenerator
 from dotenv import load_dotenv
 
-load_dotenv("C:/Users/user/Documents/GitHub/Presentation-Agent/code/JK/.env")
+load_dotenv(r"C:\wanted\Lang\Presentation-Agent\.env")
 
 def main():
     st.title("PDF 발표 대본 생성기")
