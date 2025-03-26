@@ -15,7 +15,7 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_openai import ChatOpenAI
 
 # 시스템 프롬프트 로드
-with open("C:/Users/user/Documents/GitHub/Presentation-Agent/data/txt/pt_context.txt", encoding="utf-8") as f:
+with open("../data/txt/pt_context.txt", encoding="utf-8") as f:
     system_context = f.read()
 
 class ChatbotQA:

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 import os
 
-load_dotenv("C:/wanted/Lang/Presentation-Agent/.env")
+load_dotenv("../.env")
 
 class PresentationState(BaseModel):
     """프레젠테이션 상태를 관리하는 모델"""

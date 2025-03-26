@@ -9,9 +9,8 @@ import io
 import os
 import uuid
 
-PDF_DIR = Path(r"C:\wanted\Lang\Presentation-Agent\data\save_pdf")
-txt_DIR = Path(r"C:\wanted\Lang\Presentation-Agent\data\save_txt")
-IMAGE_DIR = Path(r"C:\wanted\Lang\Presentation-Agent\data\temp_images")
+PDF_DIR = Path(r"..\data\save_pdf")
+txt_DIR = Path(r"..\data\save_txt")
 
 def save_uploaded_file(file: UploadFile) -> str:
     '''고객이 업로드한 PDF파일을 저장'''
