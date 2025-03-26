@@ -301,55 +301,55 @@ class Generate_Script(PDFProcessor):
         return all_scripts
     
 
-import os
-from fastapi import UploadFile
-import io
+# import os
+# from fastapi import UploadFile
+# import io
 
-# 테스트용 PDF 파일 경로 설정
-TEST_PDF_PATH = r"C:\wanted\Lang\Presentation-Agent\data\save_pdf\O3.pdf"  # 실제 경로에 맞게 수정하세요.
+# # 테스트용 PDF 파일 경로 설정
+# TEST_PDF_PATH = r"C:\wanted\Lang\Presentation-Agent\data\save_pdf\O3.pdf"  # 실제 경로에 맞게 수정하세요.
 
-def simulate_upload_file(file_path: str) -> UploadFile:
-    """로컬 PDF 파일을 UploadFile처럼 시뮬레이션"""
-    filename = os.path.basename(file_path)
-    with open(file_path, "rb") as f:
-        contents = f.read()
-    file_like = io.BytesIO(contents)
-    upload_file = UploadFile(filename=filename, file=file_like)
-    return upload_file
+# def simulate_upload_file(file_path: str) -> UploadFile:
+#     """로컬 PDF 파일을 UploadFile처럼 시뮬레이션"""
+#     filename = os.path.basename(file_path)
+#     with open(file_path, "rb") as f:
+#         contents = f.read()
+#     file_like = io.BytesIO(contents)
+#     upload_file = UploadFile(filename=filename, file=file_like)
+#     return upload_file
 
-def main():
-    print("✅ PDF 파일 준비 중...")
-    fake_upload = simulate_upload_file(TEST_PDF_PATH)
+# def main():
+#     print("✅ PDF 파일 준비 중...")
+#     fake_upload = simulate_upload_file(TEST_PDF_PATH)
 
-    # 전체 문서 요약을 간단히 제공
-    with open(r"C:\wanted\Lang\Presentation-Agent\data\txt\presentation_agent.txt", "r", encoding="utf-8") as f:
-        full_doc_summary = f.read()
+#     # 전체 문서 요약을 간단히 제공
+#     with open(r"C:\wanted\Lang\Presentation-Agent\data\txt\presentation_agent.txt", "r", encoding="utf-8") as f:
+#         full_doc_summary = f.read()
 
-    print("✅ Generate_Script 인스턴스 생성 중...")
-    generator = Generate_Script(pdf_file=fake_upload, full_document=full_doc_summary)
+#     print("✅ Generate_Script 인스턴스 생성 중...")
+#     generator = Generate_Script(pdf_file=fake_upload, full_document=full_doc_summary)
 
-    print("📄 PDF 페이지에서 텍스트 및 이미지 추출 중...")
-    pdf_data = generator.extract_page()
-    print(f"📄 총 {len(pdf_data)}페이지 분석 완료")
+#     print("📄 PDF 페이지에서 텍스트 및 이미지 추출 중...")
+#     pdf_data = generator.extract_page()
+#     print(f"📄 총 {len(pdf_data)}페이지 분석 완료")
 
-    for i, page in enumerate(pdf_data):
-        print(f"  - 페이지 {i+1}: 텍스트 길이 {len(page['text'])} / 이미지 수: {len(page['images'])}")
+#     for i, page in enumerate(pdf_data):
+#         print(f"  - 페이지 {i+1}: 텍스트 길이 {len(page['text'])} / 이미지 수: {len(page['images'])}")
 
-    print("🔍 중요한 이미지 필터링 중...")
-    filtered_data = generator.filter_important_images()
-    for i, page in enumerate(filtered_data):
-        print(f"  - 페이지 {i+1}: 해석이 필요한 이미지 수: {len(page['images'])}")
+#     print("🔍 중요한 이미지 필터링 중...")
+#     filtered_data = generator.filter_important_images()
+#     for i, page in enumerate(filtered_data):
+#         print(f"  - 페이지 {i+1}: 해석이 필요한 이미지 수: {len(page['images'])}")
 
-    print("🧠 페이지별 발표 대본 생성 테스트 중...")
-    for idx in range(min(4, len(filtered_data))):
-        print(f"\n📢 [슬라이드 {idx+1}] 대본 생성 중...")
-        script = generator.generate_script(idx)
-        print(f"🎙️ 생성된 대본:\n{script}")
+#     print("🧠 페이지별 발표 대본 생성 테스트 중...")
+#     for idx in range(min(4, len(filtered_data))):
+#         print(f"\n📢 [슬라이드 {idx+1}] 대본 생성 중...")
+#         script = generator.generate_script(idx)
+#         print(f"🎙️ 생성된 대본:\n{script}")
 
-    print("\n📚 전체 문서 기반 대본 생성 중...")
-    full_scripts = generator.generate_full_script(chunk_size=3)
-    for idx, s in enumerate(full_scripts):
-        print(f"\n[슬라이드 {idx+1}]\n{s}")
+#     print("\n📚 전체 문서 기반 대본 생성 중...")
+#     full_scripts = generator.generate_full_script(chunk_size=3)
+#     for idx, s in enumerate(full_scripts):
+#         print(f"\n[슬라이드 {idx+1}]\n{s}")
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

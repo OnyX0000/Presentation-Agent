@@ -3,4 +3,4 @@
 *.txt
 *.pptx
 model/ 
-
+*.sqlite3
