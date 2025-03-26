@@ -7,5 +7,5 @@ app = FastAPI()
 app.include_router(router)
 
 # 이미지 저장 경로
-STATIC_IMAGE_DIR = "C:/wanted/Lang/Presentation-Agent/data/temp_images"
+STATIC_IMAGE_DIR = r"..\data\temp_images"
 app.mount("/static", StaticFiles(directory=STATIC_IMAGE_DIR), name="static")

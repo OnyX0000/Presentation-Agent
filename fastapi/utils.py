@@ -11,6 +11,7 @@ import uuid
 
 PDF_DIR = Path(r"..\data\save_pdf")
 txt_DIR = Path(r"..\data\save_txt")
+IMAGE_DIR = Path(r"..\data\temp_images")
 
 def save_uploaded_file(file: UploadFile) -> str:
     '''고객이 업로드한 PDF파일을 저장'''

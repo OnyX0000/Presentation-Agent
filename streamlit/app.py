@@ -215,7 +215,10 @@ def main():
                         st.error("답변 생성 중 오류가 발생했습니다.")
                 except Exception as e:
                     st.error(f"오류 발생: {str(e)}")
+    
+    # 마지막 페이지에서 프레젠테이션이 완료되었을 때 챗봇 인터페이스 표시
+    if st.session_state.presentation_completed:
+        show_chat_interface()
 
 if __name__ == "__main__":
     main()
-    show_chat_interface()
