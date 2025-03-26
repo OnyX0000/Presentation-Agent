@@ -1,9 +1,25 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from dotenv import load_dotenv
+from pydantic import BaseModel
 import os
 
 load_dotenv("C:/wanted/Lang/Presentation-Agent/.env")
+
+class PresentationState(BaseModel):
+    """프레젠테이션 상태를 관리하는 모델"""
+    is_completed: bool = False
+    chat_enabled: bool = False
+
+class ChatRequest(BaseModel):
+    """챗봇 요청을 처리하는 모델"""
+    question: str
+    session_id: str
+
+class ChatResponse(BaseModel):
+    """챗봇 응답을 처리하는 모델"""
+    answer: str
+    status: str = "success"
 
 def graph_classify_llm():
     '''그래프 분류'''

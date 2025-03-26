@@ -58,6 +58,13 @@ def main():
                     border-radius: 5px;
                     margin-top: 15px;
                 }}
+                .chat-container {{
+                    border: 1px solid #ddd;
+                    padding: 20px;
+                    margin: 20px 0;
+                    border-radius: 10px;
+                    background-color: #f8f9fa;
+                }}
             </style>
         """, unsafe_allow_html=True)
 
@@ -76,6 +83,8 @@ def main():
         st.session_state.total_pages = 0
     if 'pdf_bytes' not in st.session_state:
         st.session_state.pdf_bytes = None
+    if 'presentation_completed' not in st.session_state:
+        st.session_state.presentation_completed = False
 
     # 페이지 1: PDF 업로드 및 텍스트 입력
     if st.session_state.current_page == 1:
@@ -168,5 +177,45 @@ def main():
                     
                     st.markdown("<hr>", unsafe_allow_html=True)
 
+                    # 마지막 페이지 확인
+                    if page_num == st.session_state.total_pages - 1:
+                        if not st.session_state.presentation_completed:
+                            if st.button("프레젠테이션 완료"):
+                                try:
+                                    response = requests.post(f"{API_URL}/presentation/complete")
+                                    if response.status_code == 200:
+                                        st.session_state.presentation_completed = True
+                                        st.success("프레젠테이션이 완료되었습니다!")
+                                except Exception as e:
+                                    st.error(f"오류 발생: {str(e)}")
+
+    def show_chat_interface():
+        """챗봇 인터페이스를 표시합니다."""
+        if st.session_state.presentation_completed:
+            st.markdown("""
+                <div class="chat-container">
+                    <h3>질문이 있으신가요?</h3>
+                </div>
+            """, unsafe_allow_html=True)
+            
+            # 챗봇 입력창
+            user_question = st.chat_input("질문을 입력하세요")
+            
+            if user_question:
+                try:
+                    response = requests.post(
+                        f"{API_URL}/chat",
+                        json={"question": user_question, "session_id": "streamlit_session"}
+                    )
+                    if response.status_code == 200:
+                        answer = response.json()["answer"]
+                        st.write(f"Q: {user_question}")
+                        st.write(f"A: {answer}")
+                    else:
+                        st.error("답변 생성 중 오류가 발생했습니다.")
+                except Exception as e:
+                    st.error(f"오류 발생: {str(e)}")
+
 if __name__ == "__main__":
     main()
+    show_chat_interface()
