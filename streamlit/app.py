@@ -191,16 +191,23 @@ def main():
 
     def show_chat_interface():
         """챗봇 인터페이스를 표시합니다."""
+        if "chat_history" not in st.session_state:
+            st.session_state.chat_history = []
+
         if st.session_state.presentation_completed:
             st.markdown("""
                 <div class="chat-container">
                     <h3>질문이 있으신가요?</h3>
                 </div>
             """, unsafe_allow_html=True)
-            
-            # 챗봇 입력창
+
+            # ✅ 이전 대화 출력
+            for chat in st.session_state.chat_history:
+                st.markdown(f"**🙋 사용자:** {chat['question']}")
+                st.markdown(f"**🤖 오인용:** {chat['answer']}")
+
+            # ✅ 질문 입력창
             user_question = st.chat_input("질문을 입력하세요")
-            
             if user_question:
                 try:
                     response = requests.post(
@@ -209,13 +216,16 @@ def main():
                     )
                     if response.status_code == 200:
                         answer = response.json()["answer"]
-                        st.write(f"Q: {user_question}")
-                        st.write(f"A: {answer}")
+                        st.session_state.chat_history.append({
+                            "question": user_question,
+                            "answer": answer
+                        })
+                        st.rerun()  # 최신 대화 반영 위해 rerun
                     else:
                         st.error("답변 생성 중 오류가 발생했습니다.")
                 except Exception as e:
                     st.error(f"오류 발생: {str(e)}")
-    
+
     # 마지막 페이지에서 프레젠테이션이 완료되었을 때 챗봇 인터페이스 표시
     if st.session_state.presentation_completed:
         show_chat_interface()
