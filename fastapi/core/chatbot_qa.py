@@ -1,5 +1,3 @@
-# fastapi/core/chatbot_qa.py
-
 import os
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))
@@ -14,6 +12,10 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.memory.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_openai import ChatOpenAI
+
+# 시스템 프롬프트 로드
+with open("C:/Users/user/Documents/GitHub/Presentation-Agent/data/txt/pt_context.txt", encoding="utf-8") as f:
+    system_context = f.read()
 
 class ChatbotQA:
     def __init__(self):
