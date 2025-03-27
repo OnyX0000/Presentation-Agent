@@ -182,7 +182,7 @@ def main():
                         if not st.session_state.presentation_completed:
                             if st.button("프레젠테이션 완료"):
                                 try:
-                                    response = requests.post(f"{API_URL}/presentation/complete")
+                                    response = requests.post(f"{API_URL}/presentation/complete", data={"full_document": st.session_state.full_document})
                                     if response.status_code == 200:
                                         st.session_state.presentation_completed = True
                                         st.success("프레젠테이션이 완료되었습니다!")

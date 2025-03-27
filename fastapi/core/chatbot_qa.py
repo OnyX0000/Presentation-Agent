@@ -13,10 +13,6 @@ from langchain.memory.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_openai import ChatOpenAI
 
-# 시스템 프롬프트 로드
-with open("C:/Users/user/Documents/GitHub/Presentation-Agent/data/txt/pt_context.txt", encoding="utf-8") as f:
-    system_context = f.read()
-
 class ChatbotQA:
     def __init__(self):
         self.parent_splitter = RecursiveCharacterTextSplitter(
@@ -43,10 +39,11 @@ class ChatbotQA:
             "chat_enabled": False
         }
         self.system_context = ""
-        self.setup_chains()
+        self.rag_chain = None
+        self.qa_chain = None
 
     def update_context(self, context_text: str):
-        """문맥 업데이트"""
+        print("✅ update_context 호출됨")  # 로그
         self.system_context = context_text
         self.setup_chains()
 
@@ -83,6 +80,10 @@ class ChatbotQA:
     async def process_qa_request(self, question: str, session_id: str) -> str:
         if not self.presentation_state["chat_enabled"]:
             return "프레젠테이션이 완료된 후에 질문해주세요."
+
+        # ✅ qa_chain이 아직 생성되지 않았을 경우 방어 처리
+        if self.qa_chain is None:
+            return "챗봇이 아직 초기화되지 않았습니다. 배경 정보를 먼저 등록해주세요."
 
         try:
             response = self.qa_chain.invoke(

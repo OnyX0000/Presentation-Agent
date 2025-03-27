@@ -15,6 +15,7 @@ async def generate_script(
 ):
     try:
         generator = Generate_Script(pdf_file=file, full_document=full_document)
+        chatbot_qa.update_context(full_document)
         generator.extract_page()
         generator.filter_important_images()
         structured = generator.generate_full_script()
@@ -30,9 +31,10 @@ async def generate_script(
 
 # 프레젠테이션 관련 라우터
 @router.post("/presentation/complete")
-async def complete_presentation():
+async def complete_presentation(full_document: str = Form(...)):
     """프레젠테이션 완료 상태를 저장하고 챗봇을 활성화합니다."""
     try:
+        chatbot_qa.update_context(full_document)  # ✅ 다시 초기화
         chatbot_qa.set_presentation_complete()
         return {"status": "success", "message": "프레젠테이션이 완료되었습니다."}
     except Exception as e:
