@@ -58,12 +58,11 @@ def main():
                     border-radius: 5px;
                     margin-top: 15px;
                 }}
-                .chat-container {{
-                    border: 1px solid #ddd;
-                    padding: 20px;
-                    margin: 20px 0;
-                    border-radius: 10px;
-                    background-color: #f8f9fa;
+                .audio-container {{
+                    background-color: #e9ecef;
+                    padding: 10px;
+                    border-radius: 5px;
+                    margin-top: 10px;
                 }}
             </style>
         """, unsafe_allow_html=True)
@@ -79,6 +78,8 @@ def main():
         st.session_state.full_document = ""
     if 'scripts' not in st.session_state:
         st.session_state.scripts = []
+    if 'tts_audios' not in st.session_state:
+        st.session_state.tts_audios = []
     if 'total_pages' not in st.session_state:
         st.session_state.total_pages = 0
     if 'pdf_bytes' not in st.session_state:
@@ -132,8 +133,10 @@ def main():
                             if response.status_code == 200:
                                 result = response.json()
                                 scripts = result.get("slides", [])
+                                tts_audios = result.get("tts_audios", [])
                                 if scripts:
                                     st.session_state.scripts = scripts
+                                    st.session_state.tts_audios = tts_audios
                                     st.success("전체 스크립트가 생성되었습니다!")
                                 else:
                                     st.error("스크립트 생성 중 오류가 발생했습니다.")
@@ -175,6 +178,16 @@ def main():
                         st.session_state.scripts[page_num] = edited_script
                         st.success("스크립트가 수정되었습니다!")
                     
+                    # TTS 오디오 재생
+                    if len(st.session_state.tts_audios) > page_num:
+                        st.markdown("""
+                            <div class="audio-container">
+                                <h4>음성 미리듣기</h4>
+                            </div>
+                        """, unsafe_allow_html=True)
+                        audio_base64 = st.session_state.tts_audios[page_num]
+                        st.audio(base64.b64decode(audio_base64), format="audio/mp3")
+                    
                     st.markdown("<hr>", unsafe_allow_html=True)
 
                     # 마지막 페이지 확인
@@ -201,12 +214,12 @@ def main():
                 </div>
             """, unsafe_allow_html=True)
 
-            # ✅ 이전 대화 출력
+            # 이전 대화 출력
             for chat in st.session_state.chat_history:
                 st.markdown(f"**🙋 사용자:** {chat['question']}")
                 st.markdown(f"**🤖 오인용:** {chat['answer']}")
 
-            # ✅ 질문 입력창
+            # 질문 입력창
             user_question = st.chat_input("질문을 입력하세요")
             if user_question:
                 try:
@@ -220,7 +233,7 @@ def main():
                             "question": user_question,
                             "answer": answer
                         })
-                        st.rerun()  # 최신 대화 반영 위해 rerun
+                        st.rerun()
                     else:
                         st.error("답변 생성 중 오류가 발생했습니다.")
                 except Exception as e:
