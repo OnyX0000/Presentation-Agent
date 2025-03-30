@@ -3,6 +3,14 @@ from fastapi import UploadFile
 from langchain.schema import SystemMessage, HumanMessage
 from models import script_llm
 from PIL import Image
+import re
+from typing import List, Dict, Tuple
+from sklearn.metrics.pairwise import cosine_similarity
+from google.cloud import texttospeech_v1 as tts
+from pptx import Presentation
+from pptx.util import Inches
+from typing import Optional
+import tempfile, zipfile
 import base64
 import fitz
 import io
@@ -12,6 +20,7 @@ import uuid
 PDF_DIR = Path(r"..\data\save_pdf")
 txt_DIR = Path(r"..\data\save_txt")
 IMAGE_DIR = Path(r"..\data\temp_images")
+AUDIO_DIR = Path("../data/audio")
 
 def save_uploaded_file(file: UploadFile) -> str:
     '''고객이 업로드한 PDF파일을 저장'''
@@ -61,3 +70,71 @@ def compress_full_document(full_doc: str, max_len: int = 300) -> str:
 
     summary = llm.invoke(messages)
     return summary.content.strip()
+
+def clear_audio_dir(audio_dir: Path):
+    """기존 음성 파일 모두 삭제"""
+    for file in audio_dir.glob("*.wav"):
+        file.unlink()
+
+def export_pdf_with_audio_to_pptx(pdf_bytes: bytes, wav_dir: str) -> bytes:
+    """
+    PDF 파일을 PPTX로 변환하고, 각 페이지에 대응되는 오디오(WAV)를 삽입하여 반환.
+
+    Parameters:
+    - pdf_bytes: Streamlit에서 업로드한 PDF의 byte stream
+    - wav_dir: 페이지별 WAV 파일이 저장된 디렉터리 (파일명: page_0.wav, page_1.wav, ...)
+
+    Returns:
+    - PPTX byte stream (다운로드용)
+    """
+    doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+    ppt = Presentation()
+
+    for page_index in range(len(doc)):
+        page = doc.load_page(page_index)
+
+        # 📷 PDF 페이지 → 이미지로 렌더링
+        image_path = os.path.join(tempfile.gettempdir(), f"slide_{page_index}.png")
+        page.get_pixmap(matrix=fitz.Matrix(2, 2)).save(image_path)
+
+        # 🎞️ 새 슬라이드 추가 + 이미지 삽입
+        slide = ppt.slides.add_slide(ppt.slide_layouts[6])
+        slide.shapes.add_picture(image_path, Inches(0), Inches(0), width=Inches(10), height=Inches(7.5))
+
+        # 🔈 오디오 삽입
+        audio_path = os.path.join(wav_dir, f"page_{page_index}.wav")
+        if os.path.exists(audio_path):
+            try:
+                slide.shapes.add_movie(
+                    audio_path,
+                    left=Inches(0.5), top=Inches(0.5),
+                    width=Inches(1), height=Inches(1),
+                    mime_type='audio/wav'
+                )
+                print(f"✅ Slide {page_index+1}: 오디오 삽입 완료")
+            except Exception as e:
+                print(f"⚠️ Slide {page_index+1}: 오디오 삽입 실패 → {e}")
+        else:
+            print(f"⚠️ Slide {page_index+1}: WAV 파일 없음 → {audio_path}")
+
+    # 💾 결과 임시 파일로 저장 후 byte 반환
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pptx") as tmp:
+        ppt.save(tmp.name)
+        tmp.seek(0)
+        return tmp.read()
+    
+def export_pptx_with_wavs_as_zip(pptx_bytes: bytes, wav_dir: str) -> bytes:
+    """PPTX 파일과 WAV 파일들을 하나의 ZIP으로 묶어 반환"""
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".zip") as tmp_zip:
+        with zipfile.ZipFile(tmp_zip.name, 'w') as zipf:
+            # PPTX 파일 추가
+            zipf.writestr("presentation.pptx", pptx_bytes)
+            
+            # WAV 파일들 추가
+            for filename in os.listdir(wav_dir):
+                if filename.endswith(".wav"):
+                    filepath = os.path.join(wav_dir, filename)
+                    zipf.write(filepath, arcname=os.path.join("audio", filename))
+
+        tmp_zip.seek(0)
+        return tmp_zip.read()

@@ -11,7 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.memory.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
-from langchain_openai import ChatOpenAI
+from models import QA_llm, embedding_model
 
 class ChatbotQA:
     def __init__(self):
@@ -25,14 +25,14 @@ class ChatbotQA:
             chunk_overlap=100
         )
 
-        self.embeddings = OpenAIEmbeddings()
+        self.embeddings = embedding_model()
         self.db = Chroma(
             persist_directory=os.path.join(os.path.dirname(__file__), "../../data/db/chromadb/split_knowledge"), 
             embedding_function=self.embeddings
         )
         self.parent_store = InMemoryStore()
         self.retriever = self.db.as_retriever(search_kwargs={"k": 3})
-        self.llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+        self.llm = QA_llm()
         self.chat_history_store = {}
         self.presentation_state = {
             "is_completed": False,

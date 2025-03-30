@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from utils import compress_image_to_jpeg, convert_image_to_base64, compress_full_document 
+from utils import compress_image_to_jpeg, convert_image_to_base64, compress_full_document
 from models import graph_classify_llm, vision_llm, script_llm
 from fastapi import UploadFile
 from PIL import Image
@@ -300,7 +300,6 @@ class Generate_Script(PDFProcessor):
 
         return all_scripts
     
-
 # import os
 # from fastapi import UploadFile
 # import io
