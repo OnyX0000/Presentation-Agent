@@ -229,14 +229,14 @@ class TTS_LLM:
     
     def _response(self, text: str):
         response = self.client.synthesize_speech(
-            input=tts.SynthesisInput(text=text),
+            input=tts.SynthesisInput(ssml=text),
             voice=self.voice,
             audio_config=self.audio_config
         )
         return response
     
-MAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-B")
-WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-C")
+MAN_TTS = TTS_LLM(voice_name="ko-KR-Standard-B")
+WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Standard-C")
 
 VISION_LLM  = ImageDescriptAI(
     prompt_path="prompts/image_script.prompt",
