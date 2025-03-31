@@ -116,11 +116,11 @@ def export_pdf_with_audio_to_pptx(pdf_bytes: bytes, wav_dir: str) -> bytes:
         if os.path.exists(audio_path):
             try:
                 slide.shapes.add_movie(
-                    audio_path,
-                    left=Inches(0.5), top=Inches(0.5),
-                    width=Inches(1), height=Inches(1),
-                    mime_type='audio/wav'
-                )
+                audio_path,
+                left=Inches(9), top=Inches(6.5),  
+                width=Inches(1), height=Inches(1),
+                mime_type='audio/wav'
+            )
                 print(f"✅ Slide {page_index+1}: 오디오 삽입 완료")
             except Exception as e:
                 print(f"⚠️ Slide {page_index+1}: 오디오 삽입 실패 → {e}")
