@@ -9,8 +9,8 @@ API_URL = "http://localhost:8000"
 
 # 사용할 GCP TTS 목소리 목록
 VOICE_OPTIONS = {
-    "♀️ 여성 모델": "ko-KR-Wavenet-B",
-    "♂️ 남성 모델": "ko-KR-Wavenet-C",
+    "♀️ 여성 모델": "WOMAN",
+    "♂️ 남성 모델": "MAN",
 }
 
 def get_korean_font():
@@ -125,7 +125,7 @@ def render_presentation_workflow():
                         audio_res = requests.post(f"{API_URL}/generate-audio", json={
                             "scripts": {str(i): s for i, s in enumerate(st.session_state.scripts)},
                             "keywords": st.session_state.keywords,
-                            "voice": st.session_state.selected_voice
+                            "gender": st.session_state.selected_voice
                         })
                         if audio_res.status_code == 200:
                             st.session_state.tts_audios = audio_res.json()
@@ -174,7 +174,7 @@ def render_presentation_workflow():
                                 response = requests.post(f"{API_URL}/generate-audio", json={
                                     "scripts": {str(i): s for i, s in enumerate(st.session_state.scripts)},
                                     "keywords": st.session_state.keywords,
-                                    "voice": st.session_state.selected_voice
+                                    "gender": st.session_state.selected_voice
                                 })
                                 if response.status_code == 200:
                                     st.session_state.tts_audios = response.json()
