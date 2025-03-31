@@ -12,6 +12,9 @@ from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
 from dotenv import load_dotenv
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
+from google.cloud import texttospeech_v1 as tts
+from core.TTS_tunning import embedding_model
+
 import os
 
 load_dotenv("../.env")
@@ -207,6 +210,26 @@ class Chatbot:
                 formatted.append(f"{m.type}: {m.content}")
         return "\n".join(formatted)
 
+class TTS_LLM:
+    def __init__(self, voice_name):
+
+        self.client = tts.TextToSpeechClient()
+        self.voice = tts.VoiceSelectionParams(
+            language_code="ko-KR",
+            name=voice_name
+        )
+        self.audio_config = tts.AudioConfig(audio_encoding=tts.AudioEncoding.LINEAR16)
+    
+    def _response(self, text: str):
+        response = self.client.synthesize_speech(
+            input=tts.SynthesisInput(text=text),
+            voice=self.voice,
+            audio_config=self.audio_config
+        )
+        return response
+    
+MAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-B")
+WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-C")
 
 VISION_LLM  = ImageDescriptAI(
     prompt_path="prompts/image_script.prompt",

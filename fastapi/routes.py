@@ -60,14 +60,15 @@ async def chat(request: ChatRequest):
         raise HTTPException(status_code=500, detail=str(e))
     
 @router.post("/generate-audio")
-async def generate_audio(data: Dict[str, Union[Dict[str, str], List[str]]]):
+async def generate_audio(data: Dict[str, Union[Dict[str, str], List[str], str]]):
     try:
         scripts = data["scripts"]
         keywords = data["keywords"]
+        gender = data.get("gender", "MAN")  # 기본값은 MAN으로 설정
         print("📥 /generate-audio 요청 도착")
-        print(f"▶️ scripts: {len(scripts)}, keywords: {keywords}")
+        print(f"▶️ scripts: {len(scripts)}, keywords: {keywords}, gender: {gender}")
 
-        tts_engine = TTSEngine()              # 인스턴스 생성
+        tts_engine = TTSEngine(gender=gender)  # 성별 파라미터 전달
         tts_engine.clear_audio_dir()          # 기존 WAV 제거
         result = tts_engine.synthesize_pages(pages=scripts, keywords=keywords)  # 음성 생성
         print("✅ 음성 생성 완료")

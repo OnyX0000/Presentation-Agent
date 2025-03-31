@@ -98,6 +98,7 @@ class ScriptGenerator:
 
         print(f"[SCRIPT] 페이지 {page_idx + 1} 대본 생성")
         return self.page_script_llm.invoke(inputs)
+    
 
 # if __name__ == "__main__":
 #     from fastapi import UploadFile
