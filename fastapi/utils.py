@@ -4,6 +4,7 @@ from langchain.schema import SystemMessage, HumanMessage
 from models import script_llm
 from PIL import Image
 import re
+from io import BytesIO
 from typing import List, Dict, Tuple
 from sklearn.metrics.pairwise import cosine_similarity
 from google.cloud import texttospeech_v1 as tts
@@ -22,54 +23,64 @@ txt_DIR = Path(r"..\data\save_txt")
 IMAGE_DIR = Path(r"..\data\temp_images")
 AUDIO_DIR = Path("../data/audio")
 
-def save_uploaded_file(file: UploadFile) -> str:
-    '''고객이 업로드한 PDF파일을 저장'''
-    file_path = PDF_DIR / file.filename
-    with open(file_path, "wb") as f:
-        f.write(file.file.read())
-    return str(file_path)
+def preprocess_text(text: str, max_length: int = 2000) -> str:
+    """텍스트 전처리 및 길이 제한"""
+    # 불필요한 공백 제거
+    text = re.sub(r'\s+', ' ', text)
+    # 특수문자 정리
+    text = re.sub(r'[^\w\s.,!?-]', '', text)
+    # 길이 제한
+    return text[:max_length]
 
-def save_text_to_file(text: str, filename: str = "user_input.txt") -> str:
-    '''고객이 입력한 텍스트를 저장'''
-    file_path = txt_DIR / filename
-    file_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(text)
-    return str(file_path)
+def convert_image_to_base64(image_bytes: bytes) -> str:
+    """
+    이미지 바이트를 base64 문자열로 변환
+    """
+    return base64.b64encode(image_bytes).decode('utf-8')
 
-def compress_image_to_jpeg(img_bytes: bytes, quality: int = 50) -> bytes:
-    """이미지 바이트를 JPEG 형식으로 압축"""
-    img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
-    output = io.BytesIO()
+
+def optimize_image(image_bytes: bytes, max_size: int = 800, quality: int = 50) -> bytes:
+    """
+    이미지 크기 리사이즈 + JPEG 압축
+    """
+    img = Image.open(BytesIO(image_bytes)).convert("RGB")
+    if img.width > max_size or img.height > max_size:
+        ratio = max_size / max(img.width, img.height)
+        new_size = (int(img.width * ratio), int(img.height * ratio))
+        img = img.resize(new_size, Image.Resampling.LANCZOS)
+    
+    output = BytesIO()
     img.save(output, format="JPEG", quality=quality, optimize=True)
-    return output.getvalue()
-
-def convert_image_to_base64(image_bytes):
-    '''이미지를 base64로 변환'''
-    return base64.b64encode(image_bytes).decode("utf-8")
+    return output.getvalue(), img.size
 
 def extract_image_bytes(doc, xref):
-    '''이미지를 바이트로 추출'''
-    pix = fitz.Pixmap(fitz.csRGB, doc.get_pixmap(xref))
+    """
+    PDF에서 이미지 바이트 데이터와 사이즈를 추출
+    """
+    pix = fitz.Pixmap(doc, xref)
+    if pix.n > 4:  # CMYK → RGB 변환
+        pix = fitz.Pixmap(fitz.csRGB, pix)
     img_bytes = pix.tobytes()
-    return img_bytes
+    
+    return optimize_image(img_bytes)
 
-def compress_full_document(full_doc: str, max_len: int = 300) -> str:
-    """전체 문서를 300자 이내로 요약"""
-    if len(full_doc) <= max_len:
-        return full_doc  # 이미 충분히 짧으면 그대로 사용
+def extract_page_bytes(page):
+    """
+    PDF에서 페이지 바이트 데이터와 사이즈를 추출
+    """
+    pix = page.get_pixmap(matrix=fitz.Matrix(150/72, 150/72))  # 150 DPI
+    page_bytes = pix.tobytes("png")
 
-    llm = script_llm()  # gpt-4o-mini 기반 요약기 사용
+    return optimize_image(page_bytes)
 
-    messages = [
-        SystemMessage(content="당신은 전문 요약 AI입니다."),
-        HumanMessage(content=(
-            f"다음 문서를 300자 이내로 간결하고 핵심적으로 요약해주세요:\n\n{full_doc}"
-        ))
-    ]
+def calculate_image_ratio(image_size, page_size):
+    """
+    이미지가 페이지에서 차지하는 비율 계산
+    """
+    image_area = image_size[0] * image_size[1]
+    page_area = page_size[0] * page_size[1]
 
-    summary = llm.invoke(messages)
-    return summary.content.strip()
+    return image_area / page_area
 
 def clear_audio_dir(audio_dir: Path):
     """기존 음성 파일 모두 삭제"""
