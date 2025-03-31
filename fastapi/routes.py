@@ -1,16 +1,14 @@
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException, Body
 from typing import List, Optional, Dict, Union
 from fastapi.responses import JSONResponse, StreamingResponse
-from core.script_generate import Generate_Script
-from core.chatbot_qa import chatbot_qa
-from models import PresentationState, ChatRequest, ChatResponse
+from core.chatbot_qa import ChatbotService
+from models import ChatRequest, ChatResponse
 from utils import export_pdf_with_audio_to_pptx, export_pptx_with_wavs_as_zip
 from core.TTS_tunning import TTSEngine
-from starlette.responses import Response
-import io
-import tempfile
+from core.script_generate import ScriptGenerator
 
-router = APIRouter()  
+router = APIRouter()
+chatbot_service = ChatbotService()
 
 @router.post("/generate-script")
 async def generate_script(
@@ -18,14 +16,11 @@ async def generate_script(
     full_document: str = Form(...)
 ):
     try:
-        generator = Generate_Script(pdf_file=file, full_document=full_document)
-        chatbot_qa.update_context(full_document)
-        generator.extract_page()
-        generator.filter_important_images()
-        structured = generator.generate_full_script()
-        return JSONResponse({"slides": structured})
+        script_generator = ScriptGenerator(file, full_document)
+        script_data = script_generator.process()
+        return JSONResponse(content=script_data, status_code=200)
     except Exception as e:
-        return JSONResponse(status_code=500, content={"error": str(e)})
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # @router.post("/chatpdf")
@@ -33,25 +28,22 @@ async def generate_script(
 #     # PDF 기반 Q&A
 #     pass
 
-# 프레젠테이션 관련 라우터
 @router.post("/presentation/complete")
 async def complete_presentation(full_document: str = Form(...)):
     """프레젠테이션 완료 상태를 저장하고 챗봇을 활성화합니다."""
     try:
-        chatbot_qa.update_context("")  # 이전의 발표자료의 배경지식이 있을 수 있어 context 초기화
-        chatbot_qa.update_context(full_document)  # ✅ 다시 초기화
-        chatbot_qa.set_presentation_complete()
+        chatbot_service.update_context("")              # context 초기화
+        chatbot_service.update_context(full_document)   # 새 context 적용
+        chatbot_service.set_presentation_complete()
         return {"status": "success", "message": "프레젠테이션이 완료되었습니다."}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# 챗봇 관련 라우터
 @router.get("/chat/status")
 async def get_chat_status():
     """챗봇 활성화 상태를 확인합니다."""
     try:
-        status = chatbot_qa.get_chat_status()
-        return status
+        return chatbot_service.get_status()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -59,7 +51,10 @@ async def get_chat_status():
 async def chat(request: ChatRequest):
     """챗봇 질문에 대한 답변을 생성합니다."""
     try:
-        answer = await chatbot_qa.process_qa_request(request.question, request.session_id)
+        answer = await chatbot_service.process_qa_request(
+            request.question,
+            request.session_id
+        )
         return ChatResponse(answer=answer)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -83,15 +78,6 @@ async def generate_audio(data: Dict[str, Union[Dict[str, str], List[str]]]):
         raise HTTPException(status_code=500, detail=str(e))
 
     
-# @router.post("/export-to-pptx")
-# async def export_to_pptx(file: UploadFile = File(...), audio_dir: str = Form(...)):
-#     try:
-#         from utils import export_pdf_with_audio_to_pptx
-#         pdf_bytes = await file.read()
-#         pptx_binary = export_pdf_with_audio_to_pptx(pdf_bytes, wav_dir=audio_dir)
-#         return Response(content=pptx_binary, media_type="application/vnd.openxmlformats-officedocument.presentationml.presentation")
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
     
 @router.post("/export-presentation")
 async def export_presentation(

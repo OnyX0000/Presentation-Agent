@@ -2,116 +2,45 @@ import os
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))
 
-from langchain.storage import InMemoryStore
-from langchain_chroma import Chroma
-from langchain_openai import OpenAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables.history import RunnableWithMessageHistory
-from langchain.memory.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
-from models import QA_llm, embedding_model
+from langchain_core.output_parsers import StrOutputParser
+from pydantic import BaseModel, Field
+from models import CHATBOT_LLM, PresentationState, ChatRequest, ChatResponse
 
-class ChatbotQA:
+
+class ChatbotService:
     def __init__(self):
-        self.parent_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=1000, 
-            chunk_overlap=250, 
-            separators=['==================================================', '---.*?---', '===.*?===']
-        )
-        self.child_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=500, 
-            chunk_overlap=100
-        )
-
-        self.embeddings = embedding_model()
-        self.db = Chroma(
-            persist_directory=os.path.join(os.path.dirname(__file__), "../../data/db/chromadb/split_knowledge"), 
-            embedding_function=self.embeddings
-        )
-        self.parent_store = InMemoryStore()
-        self.retriever = self.db.as_retriever(search_kwargs={"k": 3})
-        self.llm = QA_llm()
-        self.chat_history_store = {}
-        self.presentation_state = {
-            "is_completed": False,
-            "chat_enabled": False
-        }
-        self.system_context = ""
-        self.rag_chain = None
-        self.qa_chain = None
+        self.chatbot = CHATBOT_LLM
+        self.state = PresentationState(is_completed=False, chat_enabled=False)
+        self.context_loaded = False
 
     def update_context(self, context_text: str):
-        print("✅ update_context 호출됨")  # 로그
-        self.system_context = context_text
-        self.setup_chains()
-
-    def setup_chains(self):
-        prompt_template = ChatPromptTemplate.from_messages([
-            ("system", f"당신은 발표자료에 대한 내용을 질문받으면 그에 대한 답을 하는 AI 에이전트입니다.\n"
-                       f"다음은 발표자료에 대한 배경 정보입니다:\n\n{self.system_context}\n\n"
-                       f"답변은 간결하게 100토큰 이내로만 작성해주세요.\n"
-                       f"사용자가 처음 물어봐서 이전 대화 내용이 없어도 질문에 대한 대답을 하세요.\n"
-                       f"사용자가 이전 대화 내용에 대해 물어보면, 대화 기록을 확인하여 정확히 답변해주세요."),
-            ("human", "{question}"),
-            ("human", "문서:\n{documents}"),
-            ("human", "이전 대화 내용:\n{chat_history}")
-        ])
-
-        self.rag_chain = (
-            {
-                "question": lambda x: x["question"],
-                "documents": lambda x: self.retriever.invoke(x["question"]),
-                "chat_history": lambda x: self.format_chat_history(x.get("chat_history", []))
-            }
-            | prompt_template
-            | self.llm
-            | StrOutputParser()
-        )
-
-        self.qa_chain = RunnableWithMessageHistory(
-            self.rag_chain,
-            get_session_history=self.get_chat_history,
-            input_messages_key="question",
-            history_messages_key="chat_history"
-        )
-
-    async def process_qa_request(self, question: str, session_id: str) -> str:
-        if not self.presentation_state["chat_enabled"]:
-            return "프레젠테이션이 완료된 후에 질문해주세요."
-
-        # ✅ qa_chain이 아직 생성되지 않았을 경우 방어 처리
-        if self.qa_chain is None:
-            return "챗봇이 아직 초기화되지 않았습니다. 배경 정보를 먼저 등록해주세요."
-
-        try:
-            response = self.qa_chain.invoke(
-                {"question": question},
-                config={"configurable": {"session_id": session_id}}
-            )
-            return response
-        except Exception as e:
-            return f"오류 발생: {str(e)}"
+        """system_prompt용 context 설정 및 체인 생성"""
+        self.chatbot.get_template(system_context=context_text)
+        self.chatbot._make_chain()
+        self.context_loaded = True
+        print("✅ system_context 및 체인 설정 완료")
 
     def set_presentation_complete(self):
-        self.presentation_state["is_completed"] = True
-        self.presentation_state["chat_enabled"] = True
+        """프레젠테이션 완료 상태"""
+        self.state.is_completed = True
+        self.state.chat_enabled = True
+        print("✅ 프레젠테이션 완료, 챗봇 활성화")
 
-    def get_chat_status(self):
-        return self.presentation_state
+    def get_status(self) -> dict:
+        """현재 챗봇 상태 반환"""
+        return self.state.dict()
+
+    async def process_qa_request(self, question: str, session_id: str) -> str:
+        """질문에 대한 답변 생성"""
+        if not self.state.chat_enabled:
+            return "프레젠테이션이 완료된 후에 질문해주세요."
+
+        if not self.context_loaded:
+            return "챗봇이 아직 초기화되지 않았습니다. 배경 정보를 먼저 등록해주세요."
+
+        return self.chatbot.invoke(question, session_id)
 
     def get_chat_history(self, session_id: str) -> BaseChatMessageHistory:
-        if session_id not in self.chat_history_store:
-            self.chat_history_store[session_id] = ChatMessageHistory()
-        return self.chat_history_store[session_id]
-
-    def format_chat_history(self, chat_history):
-        formatted = []
-        for m in chat_history:
-            if hasattr(m, "type") and hasattr(m, "content"):
-                formatted.append(f"{m.type}: {m.content}")
-        return "\n".join(formatted)
-
-# 싱글톤
-chatbot_qa = ChatbotQA()
+        """세션별 대화 기록 조회"""
+        return self.chatbot.get_chat_history(session_id)
