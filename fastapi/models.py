@@ -235,8 +235,8 @@ class TTS_LLM:
         )
         return response
     
-MAN_TTS = TTS_LLM(voice_name="ko-KR-Standard-B")
-WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Standard-C")
+MAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-C")
+WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-A")
 
 VISION_LLM  = ImageDescriptAI(
     prompt_path="prompts/image_script.prompt",
