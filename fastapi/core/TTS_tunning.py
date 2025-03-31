@@ -7,12 +7,15 @@ import base64
 import os
 
 class TTSEngine:
-    def __init__(self, audio_dir: str = "../data/audio"):
+    def __init__(self, audio_dir: str = "../data/audio", voice_name: str = "ko-KR-Standard-B"):
         self.audio_dir = Path(audio_dir)
         self.audio_dir.mkdir(parents=True, exist_ok=True)
 
         self.client = tts.TextToSpeechClient()
-        self.voice = tts.VoiceSelectionParams(language_code="ko-KR", name="ko-KR-Standard-B")
+        self.voice = tts.VoiceSelectionParams(
+            language_code="ko-KR",
+            name=voice_name
+        )
         self.audio_config = tts.AudioConfig(audio_encoding=tts.AudioEncoding.LINEAR16)
         self.embedder = embedding_model()
 
@@ -28,11 +31,23 @@ class TTSEngine:
         top_words = sorted(word_sims.items(), key=lambda x: x[1], reverse=True)[:top_k]
         return [word for word, _ in top_words]
 
+    def apply_ssml_transformations(self, word: str, emphasized_words: list[str], special_tokens: list[str]) -> str:
+        # 대문자 단어 처리 (예: API, HTML)
+        if word in special_tokens:
+            return f'<say-as interpret-as="characters">{word}</say-as>'
+        # 강조 키워드 처리
+        elif word in emphasized_words:
+            return f'<break time="300ms"/><prosody pitch="+15%" rate="-5%" volume="+3dB"><emphasis level="moderate">{word}</emphasis></prosody>'
+        return word
+
     def build_ssml(self, text: str, emphasized_words: list[str]) -> str:
-        words = re.split(r'(\W+)', text)
+        # 대문자 단어 자동 탐지 (2자 이상)
+        special_tokens = sorted(set(re.findall(r'\b[A-Z]{2,}\b', text)))
+        print(f"🔎 철자 읽기 대상 대문자 단어: {special_tokens}")
+
+        words = re.split(r'(\W+)', text)  # 단어 + 구두점 분리
         processed = [
-            f'<break time="300ms"/><prosody pitch="+15%" rate="-5%" volume="+3dB"><emphasis level="moderate">{w}</emphasis></prosody>'
-            if w in emphasized_words else w
+            self.apply_ssml_transformations(w, emphasized_words, special_tokens)
             for w in words
         ]
         return f"<speak>{''.join(processed).strip()}</speak>"

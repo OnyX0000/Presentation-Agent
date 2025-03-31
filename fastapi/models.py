@@ -12,6 +12,7 @@ from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
 from dotenv import load_dotenv
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
+import os
 
 load_dotenv("../.env")
 
@@ -229,5 +230,5 @@ CHATBOT_LLM = Chatbot(
     prompt_path="prompts/chatbot.prompt",
     output_parser=StrOutputParser(),
     model_params=chat_model_params,
-    db_path="db"
+    db_path=os.path.join(os.path.dirname(__file__), "../../data/db/chromadb/split_knowledge")
 )
