@@ -9,8 +9,8 @@ API_URL = "http://localhost:8000"
 
 # 사용할 GCP TTS 목소리 목록
 VOICE_OPTIONS = {
-    "♀️ 여성 모델": "WOMAN",
-    "♂️ 남성 모델": "MAN",
+    "♀️ 여성 모델": "ko-KR-Wavenet-B",
+    "♂️ 남성 모델": "ko-KR-Wavenet-C",
 }
 
 def get_korean_font():
@@ -44,7 +44,7 @@ def initialize_session_state():
         "presentation_completed": False,
         "keywords": [],
         "chat_history": [],
-        "selected_voice": "ko-KR-Wavenet-A",  # 기본 음성 설정
+        "selected_voice": "ko-KR-Standard-A",
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -121,11 +121,14 @@ def render_presentation_workflow():
                     data = {"full_document": st.session_state.full_document}
                     response = requests.post(f"{API_URL}/generate-script", files=files, data=data)
                     if response.status_code == 200:
-                        st.session_state.scripts = response.json().get("slides", [])
+                        st.session_state.scripts = response.json() 
+                        
+                        requests.post(f"{API_URL}/qa/enable", data={"full_document": st.session_state.full_document})
+
                         audio_res = requests.post(f"{API_URL}/generate-audio", json={
-                            "scripts": {str(i): s for i, s in enumerate(st.session_state.scripts)},
+                            "scripts": {str(i): s if isinstance(s, str) else s.get("script", "") for i, s in enumerate(st.session_state.scripts)},
                             "keywords": st.session_state.keywords,
-                            "gender": st.session_state.selected_voice
+                            "voice": st.session_state.selected_voice
                         })
                         if audio_res.status_code == 200:
                             st.session_state.tts_audios = audio_res.json()
@@ -143,6 +146,9 @@ def render_presentation_workflow():
             st.image(convert_pdf_page_to_image(st.session_state.pdf_bytes, page_num), use_container_width=True)
 
             current_script = st.session_state.scripts[page_num]
+            if isinstance(current_script, dict):
+                current_script = current_script.get("script", "")
+
             st.markdown("<div class='script-container'><h4>발표 스크립트</h4></div>", unsafe_allow_html=True)
             edited_script = st.text_area("스크립트 수정", value=current_script, height=150, key=f"script_{page_num}")
             if edited_script != current_script:
@@ -172,9 +178,9 @@ def render_presentation_workflow():
                         try:
                             with st.spinner("음성 재생성 중..."):
                                 response = requests.post(f"{API_URL}/generate-audio", json={
-                                    "scripts": {str(i): s for i, s in enumerate(st.session_state.scripts)},
+                                    "scripts": {str(i): s if isinstance(s, str) else s.get("script", "") for i, s in enumerate(st.session_state.scripts)},
                                     "keywords": st.session_state.keywords,
-                                    "gender": st.session_state.selected_voice
+                                    "voice": st.session_state.selected_voice
                                 })
                                 if response.status_code == 200:
                                     st.session_state.tts_audios = response.json()

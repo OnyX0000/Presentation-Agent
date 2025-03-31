@@ -1,7 +1,6 @@
 from pathlib import Path
 from fastapi import UploadFile
 from langchain.schema import SystemMessage, HumanMessage
-from models import script_llm
 from PIL import Image
 import re
 from io import BytesIO

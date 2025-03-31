@@ -28,28 +28,29 @@ async def generate_script(
 #     # PDF 기반 Q&A
 #     pass
 
-@router.post("/presentation/complete")
-async def complete_presentation(full_document: str = Form(...)):
-    """프레젠테이션 완료 상태를 저장하고 챗봇을 활성화합니다."""
+@router.post("/qa/enable")
+async def enable_qa(full_document: str = Form(...)):
+    """스크립트와 음성 생성 완료 후 챗봇을 초기화 및 활성화합니다."""
     try:
         chatbot_service.update_context("")              # context 초기화
         chatbot_service.update_context(full_document)   # 새 context 적용
         chatbot_service.set_presentation_complete()
-        return {"status": "success", "message": "프레젠테이션이 완료되었습니다."}
+        return {"status": "success", "message": "챗봇이 활성화되었습니다."}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/chat/status")
-async def get_chat_status():
-    """챗봇 활성화 상태를 확인합니다."""
-    try:
-        return chatbot_service.get_status()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# @router.get("/chat/status")
+# async def get_chat_status():
+#     """챗봇 활성화 상태를 확인합니다."""
+#     try:
+#         return chatbot_service.get_status()
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     """챗봇 질문에 대한 답변을 생성합니다."""
+    chatbot_service.set_presentation_complete()
     try:
         answer = await chatbot_service.process_qa_request(
             request.question,

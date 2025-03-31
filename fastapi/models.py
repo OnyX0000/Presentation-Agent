@@ -8,12 +8,12 @@ from langchain.memory.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from pydantic import BaseModel, Field
 from pathlib import Path
+from typing import Optional
 from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
 from dotenv import load_dotenv
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from google.cloud import texttospeech_v1 as tts
-from core.TTS_tunning import embedding_model
 
 import os
 
@@ -145,7 +145,7 @@ class Chatbot:
         self.retriever = self._init_retriever(db_path)
         self.llm = ChatOpenAI(**model_params)
         self.chat_history_store = {}
-        self.prompt_template = None
+        self.prompt_template: Optional[ChatPromptTemplate] = None
         self.chain = None
 
     def _init_retriever(self, db_path):
@@ -154,17 +154,24 @@ class Chatbot:
 
     def get_template(self, system_context: str) -> ChatPromptTemplate:
         """프롬프트 파일을 불러와 system message로 구성"""
+        from string import Template
         with open(self.prompt_path, "r", encoding="utf-8") as f:
-            system_prompt = f.read().format(context=system_context)
+            # 프롬프트 내부에 ${context}를 사용하는 Template 객체 생성
+            system_prompt_template = Template(f.read())
+            # 실제 context를 채워 넣은 system prompt 생성
+            system_prompt = system_prompt_template.safe_substitute(context=system_context)
 
+        # 'context'는 이미 치환되었으므로 입력 변수에서 제거
         prompt = ChatPromptTemplate.from_messages([
             ("system", system_prompt),
             ("human", "{question}"),
             ("human", "문서:\n{documents}"),
             ("human", "이전 대화 내용:\n{chat_history}")
         ])
+
         self.prompt_template = prompt
         return prompt
+
 
     def _make_chain(self):
         """PromptTemplate + LLM + 출력 파서 연결"""
@@ -228,8 +235,8 @@ class TTS_LLM:
         )
         return response
     
-MAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-D")
-WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-A")
+MAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-B")
+WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-C")
 
 VISION_LLM  = ImageDescriptAI(
     prompt_path="prompts/image_script.prompt",
