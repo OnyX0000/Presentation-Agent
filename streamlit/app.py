@@ -9,10 +9,8 @@ API_URL = "http://localhost:8000"
 
 # 사용할 GCP TTS 목소리 목록
 VOICE_OPTIONS = {
-    "1번 여성 음성 (ko-KR-Wavenet-A)": "ko-KR-Wavenet-A",
-    "2번 여성 음성 (ko-KR-Wavenet-B)": "ko-KR-Wavenet-B",
-    "1번 남성 음성 (ko-KR-Wavenet-C)": "ko-KR-Wavenet-C",
-    "2번 남성 음성 (ko-KR-Wavenet-D)": "ko-KR-Wavenet-D"
+    "♀️ 여성 모델": "ko-KR-Wavenet-B",
+    "♂️ 남성 모델": "ko-KR-Wavenet-C",
 }
 
 def get_korean_font():
@@ -56,8 +54,9 @@ def render_home_page():
     st.title("Welcome to 발표하는 모델 : 오인용")
     st.markdown("""
     ### 📝 가이드라인
-    - 발표를 원하는 발표자료(PDF 파일)를 넣어주세요.  
-    - PDF 자료에는 없지만 발표 대본에 들어갈 전체 문서 요약을 입력해주세요.  
+    - 발표를 원하는 발표자료(**PDF 파일**)를 넣어주세요.  
+    - 발표 자료에는 없지만 발표 대본에 들어갈 프로젝트 스토리를 작성해주세요.
+    - 프로젝트 스토리는 **5문단**으로 작성하는 것을 권장합니다.  
     - 발표 중 대본에서 강조하고 싶은 단어를 **쉼표(,)** 로 나누어 입력해주세요.  
     - 발표자료에는 발표 순서를 보여주기 위해 존재하는 **아무 내용이 없는 파티션 페이지는 넣지 말아주세요.**  
     - 대본 생성 시 시간이 발표 자료의 길이에 따라 몇 분 가량 걸릴 수 있습니다.  
