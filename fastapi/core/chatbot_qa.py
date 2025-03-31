@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))
-
+from typing import List, Dict
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.output_parsers import StrOutputParser
 from pydantic import BaseModel, Field
@@ -14,12 +14,22 @@ class ChatbotService:
         self.state = PresentationState(is_completed=False, chat_enabled=False)
         self.context_loaded = False
 
-    def update_context(self, context_text: str):
-        """system_prompt용 context 설정 및 체인 생성"""
-        self.chatbot.get_template(system_context=context_text)
+    def update_context(self, context_text: str, script_data: List[Dict[str, str]]):
+        """system_prompt 및 발표 대본 context 설정 및 체인 생성"""
+        # 페이지별 대본 정보를 문자열로 통합
+        page_contexts = [f"[슬라이드 {item['page'] + 1}]: {item['script']}" for item in script_data if 'page' in item and 'script' in item]
+        script_context_text = "\n".join(page_contexts)
+
+        # 전체 system context 구성
+        combined_context = context_text.strip() + "\n\n" + script_context_text.strip()
+
+        # 프롬프트 및 체인 설정
+        self.chatbot.get_template(system_context=combined_context)
         self.chatbot._make_chain()
         self.context_loaded = True
-        print("✅ system_context 및 체인 설정 완료")
+        self.state.chat_enabled = True
+
+        print("✅ 챗봇 system_prompt 및 발표 대본 context 설정 완료")
 
     def set_presentation_complete(self):
         """프레젠테이션 완료 상태"""

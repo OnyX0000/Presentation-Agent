@@ -6,6 +6,7 @@ from models import ChatRequest, ChatResponse
 from utils import export_pdf_with_audio_to_pptx, export_pptx_with_wavs_as_zip
 from core.TTS_tunning import TTSEngine
 from core.script_generate import ScriptGenerator
+from models import QAEnableRequest
 
 router = APIRouter()
 chatbot_service = ChatbotService()
@@ -29,15 +30,12 @@ async def generate_script(
 #     pass
 
 @router.post("/qa/enable")
-async def enable_qa(full_document: str = Form(...)):
-    """스크립트와 음성 생성 완료 후 챗봇을 초기화 및 활성화합니다."""
-    try:
-        chatbot_service.update_context("")              # context 초기화
-        chatbot_service.update_context(full_document)   # 새 context 적용
-        chatbot_service.set_presentation_complete()
-        return {"status": "success", "message": "챗봇이 활성화되었습니다."}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def enable_qa(payload: QAEnableRequest):
+    full_document = payload.full_document
+    script_data = [s.model_dump() for s in payload.script_data]  # dict로 변환
+    chatbot_service.update_context(full_document, script_data)
+    chatbot_service.set_presentation_complete()
+    return {"status": "success"}
 
 # @router.get("/chat/status")
 # async def get_chat_status():

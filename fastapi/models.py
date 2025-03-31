@@ -8,7 +8,7 @@ from langchain.memory.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from pydantic import BaseModel, Field
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 from langchain_core.output_parsers import PydanticOutputParser, StrOutputParser
 from dotenv import load_dotenv
 from langchain.vectorstores import Chroma
@@ -135,6 +135,14 @@ class ChatResponse(BaseModel):
 class PresentationState(BaseModel):
     is_completed: bool = Field(default=False)
     chat_enabled: bool = Field(default=False)
+
+class PageScript(BaseModel):
+    page: int
+    script: str
+
+class QAEnableRequest(BaseModel):
+    full_document: str
+    script_data: list[PageScript]
 
 class Chatbot:
     """챗봇 모델 생성 클래스"""

@@ -123,7 +123,15 @@ def render_presentation_workflow():
                     if response.status_code == 200:
                         st.session_state.scripts = response.json() 
                         
-                        requests.post(f"{API_URL}/qa/enable", data={"full_document": st.session_state.full_document})
+                        # 🎯 Q&A 활성화 요청
+                        script_data = [{"page": i, "script": s if isinstance(s, str) else s.get("script", "")}
+                                    for i, s in enumerate(st.session_state.scripts)]
+                        enable_res = requests.post(f"{API_URL}/qa/enable", json={
+                            "full_document": st.session_state.full_document,
+                            "script_data": script_data
+                        })
+                        if enable_res.status_code == 200:
+                            st.success("Q&A 기능이 활성화되었습니다.")
 
                         gender = st.session_state.selected_voice
 
