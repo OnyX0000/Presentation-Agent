@@ -130,8 +130,6 @@ def render_presentation_workflow():
                             "full_document": st.session_state.full_document,
                             "script_data": script_data
                         })
-                        if enable_res.status_code == 200:
-                            st.success("Q&A 기능이 활성화되었습니다.")
 
                         gender = st.session_state.selected_voice
 

@@ -14,6 +14,14 @@ from dotenv import load_dotenv
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from google.cloud import texttospeech_v1 as tts
+from langchain.storage import InMemoryStore
+from langchain.retrievers import ParentDocumentRetriever
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.tools.ddg_search import DuckDuckGoSearchRun
+from langchain.tools import Tool
+from langchain_core.documents import Document
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.agents import initialize_agent, AgentType
 
 import os
 
@@ -35,12 +43,18 @@ page_script_model_params = {
 chat_model_params = {
     "model": "gpt-4o-mini",
     "temperature": 0.0,
-    # "max_tokens": 1024,
     "timeout": 60,
 }
 
+# tool 추가
+ddg_search = DuckDuckGoSearchRun()
+search_tool = Tool(
+    name="duckduckgo_search",
+    func=ddg_search.run,
+    description="사용자의 질문과 관련된 정보를 웹에서 검색할 수 있는 도구입니다."
+)
+
 class GPTModel():
-    """LLM 모델 생성 클래스"""
     def __init__(self, prompt_path, output_parser, model_params, use_memory=False):
         self.prompt_path = prompt_path
         self.llm = ChatOpenAI(**model_params)
@@ -63,7 +77,6 @@ class GPTModel():
         return template
 
     def _set_prompt(self, **inputs):
-        # 자식 클래스에서 오버라이드
         pass
 
     def invoke(self, inputs):
@@ -118,7 +131,6 @@ class PageScriptAI(GPTModel):
             page_type = "body"
 
         prompt = self._get_template(page_type).format(**inputs)
-
         return prompt
 
 class ImageCategory(BaseModel):
@@ -131,7 +143,7 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
-    
+
 class PresentationState(BaseModel):
     is_completed: bool = Field(default=False)
     chat_enabled: bool = Field(default=False)
@@ -145,8 +157,7 @@ class QAEnableRequest(BaseModel):
     script_data: list[PageScript]
 
 class Chatbot:
-    """챗봇 모델 생성 클래스"""
-    def __init__(self, prompt_path, output_parser, model_params,db_path):
+    def __init__(self, prompt_path, output_parser, model_params, db_path):
         self.prompt_path = prompt_path
         self.embeddings = OpenAIEmbeddings()
         self.output_parser = output_parser
@@ -157,43 +168,86 @@ class Chatbot:
         self.chain = None
 
     def _init_retriever(self, db_path):
-        db = Chroma(persist_directory=db_path, embedding_function=self.embeddings)
-        return db.as_retriever(search_kwargs={"k": 3})
+        # ParentDocumentRetriever 설정
+        parent_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=500,
+            chunk_overlap=250,
+            separators=['==================================================', '---.*?---', '===.*?===']
+        )
+        child_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=300,
+            chunk_overlap=100
+        )
+
+        vectorstore = Chroma(
+            persist_directory=db_path,
+            embedding_function=self.embeddings
+        )
+        parent_store = InMemoryStore()
+
+        # 🔹 텍스트 파일 로드 및 분할
+        text_paths = [
+            "../data/txt/wikidocs_01.txt",
+            "../data/txt/wikidocs_02.txt",
+            "../data/txt/wikidocs_03.txt"
+        ]
+        documents = []
+
+        for path in text_paths:
+            abs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), path))
+            if os.path.exists(abs_path):
+                with open(abs_path, "r", encoding="utf-8") as f:
+                    raw_text = f.read()
+                    splits = parent_splitter.create_documents([raw_text])
+                    documents.extend(splits)
+            else:
+                print(f"⚠️ 파일을 찾을 수 없습니다: {abs_path}")
+
+        # 🔹 문서를 docstore에 저장 (InMemoryStore는 key-value 형태)
+        parent_store.mset([(str(i), doc) for i, doc in enumerate(documents)])
+
+        return ParentDocumentRetriever(
+            vectorstore=vectorstore,
+            docstore=parent_store,
+            child_splitter=child_splitter,
+            parent_splitter=parent_splitter,
+            search_kwargs={"k": 5} 
+        )
 
     def get_template(self, system_context: str) -> ChatPromptTemplate:
-        """프롬프트 파일을 불러와 system message로 구성"""
         from string import Template
         with open(self.prompt_path, "r", encoding="utf-8") as f:
-            # 프롬프트 내부에 ${context}를 사용하는 Template 객체 생성
             system_prompt_template = Template(f.read())
-            # 실제 context를 채워 넣은 system prompt 생성
             system_prompt = system_prompt_template.safe_substitute(context=system_context)
 
-        # 'context'는 이미 치환되었으므로 입력 변수에서 제거
         prompt = ChatPromptTemplate.from_messages([
             ("system", system_prompt),
             ("human", "{question}"),
             ("human", "문서:\n{documents}"),
             ("human", "이전 대화 내용:\n{chat_history}")
         ])
-
         self.prompt_template = prompt
         return prompt
 
-
     def _make_chain(self):
-        """PromptTemplate + LLM + 출력 파서 연결"""
+        def retrieve_or_search(question: str):
+            docs = self.retriever.get_relevant_documents(question)
+            if not docs:
+                print("⚠️ 로컬 문서에서 검색 결과 없음 → 웹 검색 시도")
+                web_result = ddg_search.run(question)
+                return [Document(page_content=web_result)]
+            return docs
+
         self.chain = (
             {
                 "question": lambda x: x["question"],
-                "documents": lambda x: self.retriever.invoke(x["question"]),
+                "documents": lambda x: retrieve_or_search(x["question"]),
                 "chat_history": lambda x: self.format_chat_history(x.get("chat_history", []))
             }
             | self.prompt_template
             | self.llm
             | StrOutputParser()
         )
-
         self.qa_chain = RunnableWithMessageHistory(
             self.chain,
             get_session_history=self.get_chat_history,
@@ -204,7 +258,6 @@ class Chatbot:
     def invoke(self, question: str, session_id: str) -> str:
         if not self.qa_chain:
             return "체인이 준비되지 않았습니다. system_context를 먼저 설정해주세요."
-
         try:
             return self.qa_chain.invoke(
                 {"question": question},
@@ -227,7 +280,6 @@ class Chatbot:
 
 class TTS_LLM:
     def __init__(self, voice_name):
-
         self.client = tts.TextToSpeechClient()
         self.voice = tts.VoiceSelectionParams(
             language_code="ko-KR",
@@ -242,7 +294,7 @@ class TTS_LLM:
             audio_config=self.audio_config
         )
         return response
-    
+
 MAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-C")
 WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-A")
 
