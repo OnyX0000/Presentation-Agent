@@ -200,8 +200,6 @@ class Chatbot:
                     raw_text = f.read()
                     splits = parent_splitter.create_documents([raw_text])
                     documents.extend(splits)
-            else:
-                print(f"⚠️ 파일을 찾을 수 없습니다: {abs_path}")
 
         # 🔹 문서를 docstore에 저장 (InMemoryStore는 key-value 형태)
         parent_store.mset([(str(i), doc) for i, doc in enumerate(documents)])
@@ -233,7 +231,6 @@ class Chatbot:
         def retrieve_or_search(question: str):
             docs = self.retriever.get_relevant_documents(question)
             if not docs:
-                print("⚠️ 로컬 문서에서 검색 결과 없음 → 웹 검색 시도")
                 web_result = ddg_search.run(question)
                 return [Document(page_content=web_result)]
             return docs

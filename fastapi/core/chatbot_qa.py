@@ -35,7 +35,7 @@ class ChatbotService:
         """프레젠테이션 완료 상태"""
         self.state.is_completed = True
         self.state.chat_enabled = True
-        print("✅ 프레젠테이션 완료, 챗봇 활성화")
+        print("✅ 챗봇 활성화")
 
     def get_status(self) -> dict:
         """현재 챗봇 상태 반환"""
