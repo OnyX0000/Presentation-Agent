@@ -105,39 +105,35 @@ def set_background(image_path):
     """
     st.markdown(background_style, unsafe_allow_html=True)
 
-def sidebar_logo():
-    st.sidebar.markdown("""
-        <div style='text-align:center; padding-bottom: 20px;'>
-            <img src='data:image/png;base64,{}' width='120'>
-            <h3 style='margin-top:10px;'>Q&A 챗봇</h3>
-        </div>
-    """.format(base64.b64encode(open("assets/image4.png", "rb").read()).decode()), unsafe_allow_html=True)
-
 def show_chat_interface():
     if st.session_state.app_page == "presentation" and st.session_state.current_page != 1:
         with st.sidebar:
-            # 로고 이미지
-            st.markdown(
-                f"""
-                <div style="text-align: center;">
-                    <img src="data:image/png;base64,{base64.b64encode(open('assets/image4.png', 'rb').read()).decode()}" width="120">
-                    <div style="margin-top: 10px; font-weight: bold;">Q&A 챗봇</div>
+            image_path = "assets/image4.png"  # 또는 방금 업로드한 파일 경로 사용
+            with open(image_path, "rb") as f:
+                image_base64 = base64.b64encode(f.read()).decode()
+
+            st.markdown(f"""
+                <div style="text-align: left; margin-bottom: 1.5rem;">
+                    <img src="data:image/png;base64,{image_base64}" style="width: 60px; margin-bottom: 0.5rem;">
+                    <div style="font-size: 1.4rem; font-weight: 700;">💬 AI 오인용</div>
+                    <div style="font-size: 0.85rem; color: #adb5bd;">PPT에 관련 질문을 해주세요!</div>
                 </div>
                 <hr style="margin-top: 1rem; margin-bottom: 1rem;">
-                """,
-                unsafe_allow_html=True
-            )
+            """, unsafe_allow_html=True)
 
             # 이전 질문-답변 출력
             for chat in st.session_state.chat_history:
                 st.markdown(f"**🙋 사용자:** {chat['question']}")
                 st.markdown(f"**🤖 챗봇:** {chat['answer']}")
-            
+
             # 질문 입력
             user_question = st.chat_input("질문을 입력하세요")
             if user_question:
                 try:
-                    response = requests.post(f"{API_URL}/chat", json={"question": user_question, "session_id": "streamlit_session"})
+                    response = requests.post(
+                        f"{API_URL}/chat",
+                        json={"question": user_question, "session_id": "streamlit_session"}
+                    )
                     if response.status_code == 200:
                         st.session_state.chat_history.append({
                             "question": user_question,
@@ -223,23 +219,18 @@ def render_presentation_workflow():
             "",
             height=200,
             placeholder=(
-                "현대 사회에서 발표는 필수적인 활동이지만, 많은 사람들이 내성적 성격, 무대 공포증, 실수에 대한 두려움 등으로 인해 어려움을 겪고 있습니다. "
-                "이러한 문제를 해결하기 위해 AI 기반 발표 지원 시스템인 '저희 발표 안합니다!' 프로젝트가 기획되었습니다. "
-                "이 프로젝트는 AI가 자동으로 발표 대본을 생성하고, 음성 합성을 활용하여 직접 발표까지 수행하는 기능을 제공합니다.\n\n"
-                "**프로젝트 기획 및 기술 스택**\n"
-                "프로젝트는 AI를 활용한 발표 자동화 시스템 구축을 목표로 하며, FastAPI, Streamlit, LangChain, Ollama, ChromaDB, OpenAI, Hugging Face 등의 기술 스택을 사용합니다. "
-                "특히, LLM을 기반으로 발표 대본을 자동 생성하고, RAG를 활용하여 벡터 DB에 문서를 저장 및 검색할 수 있도록 설계되었습니다.\n\n"
-                "**시스템 구조 및 작업 흐름**\n"
-                "사용자는 발표 자료를 업로드하면 AI가 내용을 분석하고, 발표 대본을 생성한 후 음성으로 발표까지 진행합니다. VectorDB에 문서를 저장하고, LLM(오인용 모델)이 이를 분석하여 발표 내용을 구성합니다. "
-                "FastAPI를 기반으로 API 서비스를 제공하고, Streamlit을 활용하여 웹 애플리케이션 형태로 사용자 인터페이스(UI)를 구축합니다.\n\n"
-                "**프로젝트 발전 방향**\n"
-                "향후 개선할 점으로 실시간 상호작용, 인간처럼 말하는 기능, 사용자별 맞춤 발표 스타일 적용, 디지털 아바타를 활용한 발표 기능 추가, 도메인 확장 등이 있습니다. "
-                "이를 통해 더욱 자연스러운 발표 경험을 제공하고, 다양한 환경에서 활용될 수 있도록 발전시킬 계획입니다.\n\n"
-                "**결론**\n"
-                "'저희 발표 안합니다!' 프로젝트는 AI를 활용하여 발표에 대한 부담을 줄이고, 누구나 효율적으로 발표할 수 있도록 돕는 것을 목표로 합니다. "
-                "이를 통해 발표 준비에 소요되는 시간을 단축하고, 일정한 발표 퀄리티를 유지할 수 있으며, 기업, 연구자, 학생 등 다양한 사용자층이 보다 편리하게 정보를 활용할 수 있을 것으로 기대됩니다."
-                )
+                "1. 프로젝트 배경과 필요성\n"
+                "발표에 대한 두려움과 어려움을 해결하고자 누구나 쉽게 발표할 수 있는 자동화 시스템의 필요성이 대두되었습니다.\n\n"
+                "2. 프로젝트 개요와 시스템 구조\n"
+                "PDF와 요약 텍스트를 입력하면 AI가 자동으로 대본을 생성하고 음성으로 변환하여 발표와 Q&A까지 지원하는 시스템을 개발했습니다.\n\n"
+                "3. 기술 구성 및 핵심 기능\n"
+                "GPT-4o-mini, LangChain, FastAPI 기반의 시스템은 대본 생성, TTS 발표, 실시간 챗봇 기능과 다양한 발표 최적화 기술을 포함합니다.\n\n"
+                "4. 미래 확장성\n"
+                "보안 강화, 캐릭터 도입, 실시간 인터랙션 등으로 다양한 발표 환경에 확장 가능한 구조를 지향합니다.\n\n"
+                "5. 활용 계획\n"
+                "교육, 기업, 고객 응대 등 다양한 분야에서 자동 발표 시스템으로 활용될 수 있습니다."
             )
+        )
 
             if all([st.session_state.pdf_file, st.session_state.full_document, st.session_state.keywords]):
                 if st.button(":arrow_right: 다음 단계로 이동"):
