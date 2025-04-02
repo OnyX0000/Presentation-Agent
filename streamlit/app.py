@@ -161,7 +161,7 @@ def render_home_page():
                 max-width: 860px;
                 height: auto;
                 border-radius: 15px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                # box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             '
         >
     </div>
@@ -178,12 +178,12 @@ def render_home_page():
     '>
         <h3 style='margin-top: 0;'>📝 사용 가이드</h3>
         <ul style='padding-left: 1.2rem; font-size: 1.05rem; color: #343a40; line-height: 1.7;'>
-            <li><strong>발표자료를 <span style="color:#0d6efd;">PDF 파일</span>로 업로드해주세요.</strong></li>
-            <li><strong><span style="color:#0d6efd;">5문단</span> 이상의 <span style="color:#0d6efd;">프로젝트 스토리</span>를 작성해주세요.</strong></li>
-            <li><strong>입력하시는 <span style="color:#0d6efd;">프로젝트의 스토리가 구체적일수록</span> 대본의 퀄리티가 올라갑니다.</strong></li>
-            <li><strong>강조하고 싶은 단어는 <span style="color:#0d6efd;">쉼표(,)</span>로 구분하여 입력해주세요.</strong></li>
-            <li><strong><span style="color:#0d6efd;">내용이 없는 파티션 슬라이드(간지)</span>는 제거해주세요.</strong></li>
-            <li><strong>스크립트 생성에는 발표자료의 길이에 따라 <span style="color:#0d6efd;">다소 시간(수 분 가량)</span>이 소요될 수 있습니다.</strong></li>
+            <li><strong>발표자료를 <span style="color:#ff0000;">PDF 파일</span>로 업로드해주세요.</strong></li>
+            <li><strong><span style="color:#ff0000;">5문단</span> 이상의 <span style="color:#ff0000;">프로젝트 스토리</span>를 작성해주세요.</strong></li>
+            <li><strong>입력하시는 <span style="color:#ff0000;">프로젝트의 스토리가 구체적일수록</span> 대본의 퀄리티가 올라갑니다.</strong></li>
+            <li><strong>강조하고 싶은 단어는 <span style="color:#ff0000;">쉼표(,)</span>로 구분하여 입력해주세요.</strong></li>
+            <li><strong><span style="color:#ff0000;">내용이 없는 파티션 슬라이드(간지)</span>는 제거해주세요.</strong></li>
+            <li><strong>스크립트 생성에는 발표자료의 길이에 따라 <span style="color:#ff0000;">다소 시간(수 분 가량)</span>이 소요될 수 있습니다.</strong></li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
