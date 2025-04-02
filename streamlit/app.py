@@ -108,7 +108,7 @@ def set_background(image_path):
 def show_chat_interface():
     if st.session_state.app_page == "presentation" and st.session_state.current_page != 1:
         with st.sidebar:
-            image_path = "assets/image4.png"  # 또는 방금 업로드한 파일 경로 사용
+            image_path = "assets/chatbot.png"  # 또는 방금 업로드한 파일 경로 사용
             with open(image_path, "rb") as f:
                 image_base64 = base64.b64encode(f.read()).decode()
 
@@ -130,10 +130,11 @@ def show_chat_interface():
             user_question = st.chat_input("질문을 입력하세요")
             if user_question:
                 try:
-                    response = requests.post(
-                        f"{API_URL}/chat",
-                        json={"question": user_question, "session_id": "streamlit_session"}
-                    )
+                    with st.spinner("생각 중입니다..."):
+                        response = requests.post(
+                            f"{API_URL}/chat",
+                            json={"question": user_question, "session_id": "streamlit_session"}
+                        )
                     if response.status_code == 200:
                         st.session_state.chat_history.append({
                             "question": user_question,
