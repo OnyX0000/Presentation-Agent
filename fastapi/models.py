@@ -29,14 +29,14 @@ load_dotenv("../.env")
 
 image_model_params = {
     "model": "gpt-4o-mini",
-    "temperature": 0.3,
+    "temperature": 0.1,
     "max_tokens": 1024,
     "timeout": 60,
 }
 
 page_script_model_params = {
     "model": "gpt-4o-mini",
-    "temperature": 0.1,
+    "temperature": 0.9,
     "timeout": 60,
 }
 

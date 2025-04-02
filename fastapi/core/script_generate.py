@@ -33,10 +33,11 @@ class ScriptGenerator:
             print(f"[TEXT] {text}")
             image_description = self._image_process(page, text)
             script = self.generate_script(page_idx, text, image_description, total_pages)
+            script = script.replace("**", "")
             print(f"[{page_idx + 1} PAGE 원본 대본] {script}")
-            if page_idx > 0 and page_idx < total_pages - 1:
-                script = preprocess_script(script)
-            print(f"[{page_idx + 1} PAGE 수정 대본] {script}")
+            # if page_idx > 0 and page_idx < total_pages - 1:
+            #     script = preprocess_script(script)
+            #     print(f"[{page_idx + 1} PAGE 수정 대본] {script}")
 
             self.pdf_data.append({
                 "page": page_idx + 1,
