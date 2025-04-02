@@ -33,6 +33,7 @@ class ScriptGenerator:
             print(f"[TEXT] {text}")
             image_description = self._image_process(page, text)
             script = self.generate_script(page_idx, text, image_description, total_pages)
+            script = script.replace("**", "")
 
             self.pdf_data.append({
                 "page": page_idx + 1,
@@ -41,7 +42,7 @@ class ScriptGenerator:
                 "script": script
             })
 
-            print(f"[{page_idx + 1}PAGE] {script}")
+            print(f"[{page_idx + 1} PAGE] {script}")
 
         print("[PROCESS] 전체 완료")
         return self.pdf_data

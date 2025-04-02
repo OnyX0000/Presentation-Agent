@@ -27,7 +27,7 @@ def preprocess_text(text: str, max_length: int = 2000) -> str:
     # 불필요한 공백 제거
     text = re.sub(r'\s+', ' ', text)
     # 특수문자 정리
-    text = re.sub(r'[^\w\s.,!?-]', '', text)
+    text = re.sub(r'[^\w\s.*!?-]', '', text)
     # 길이 제한
     return text[:max_length]
 
