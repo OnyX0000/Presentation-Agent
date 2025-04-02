@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from utils import preprocess_text, convert_image_to_base64, extract_image_bytes, extract_page_bytes, calculate_image_ratio
+from utils import preprocess_text, convert_image_to_base64, extract_image_bytes, extract_page_bytes, calculate_image_ratio, preprocess_script
 from fastapi import UploadFile
 from models import VISION_LLM, PAGE_SCRIPT_LLM
 import fitz
@@ -33,7 +33,10 @@ class ScriptGenerator:
             print(f"[TEXT] {text}")
             image_description = self._image_process(page, text)
             script = self.generate_script(page_idx, text, image_description, total_pages)
-            script = script.replace("**", "")
+            print(f"[{page_idx + 1} PAGE 원본 대본] {script}")
+            if page_idx > 0 and page_idx < total_pages - 1:
+                script = preprocess_script(script)
+            print(f"[{page_idx + 1} PAGE 수정 대본] {script}")
 
             self.pdf_data.append({
                 "page": page_idx + 1,
@@ -42,7 +45,7 @@ class ScriptGenerator:
                 "script": script
             })
 
-            print(f"[{page_idx + 1} PAGE] {script}")
+            # print(f"[{page_idx + 1} PAGE] {script}")
 
         print("[PROCESS] 전체 완료")
         return self.pdf_data

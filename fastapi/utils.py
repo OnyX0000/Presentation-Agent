@@ -81,6 +81,16 @@ def calculate_image_ratio(image_size, page_size):
 
     return image_area / page_area
 
+def preprocess_script(script: str) -> str:
+    """
+    대본 전처리
+    """
+    script = script.replace("**","")
+    # 문장 구분자 뒤 공백까지 포함해서 split
+    sentences = re.split(r'(?<=[.])\s+', script.strip(), maxsplit=1)
+    # 첫 번째 문장 제거
+    return sentences[1] if len(sentences) > 1 else ''
+
 def clear_audio_dir(audio_dir: Path):
     """기존 음성 파일 모두 삭제"""
     for file in audio_dir.glob("*.wav"):
