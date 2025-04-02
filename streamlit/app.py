@@ -147,34 +147,81 @@ def show_chat_interface():
                     st.error(f"오류 발생: {str(e)}")
 
 def render_home_page():
-    st.markdown("""
-    <div style='display: flex; align-items: center; gap: 10px;'>
-        <img src='data:image/png;base64,{}' width='100'>
-        <h1 style='margin: 0; font-size: 50px;'>발표하는 모델 : 오인용</h1>
-    </div>
-    """.format(base64.b64encode(open("assets/image4.png", "rb").read()).decode()), unsafe_allow_html=True)
-
-    
+    # 상단 타이틀 박스
     st.markdown(f"""
-    <div style='margin-top: 2.5rem; font-weight: bold; font-size: 1.05rem;'>
-        <h3>📝 <strong>사용 가이드</strong></h3>
-        <ul>
-            <li><strong>발표자료를 <span style="color:#d63384;"><strong>PDF파일</strong></span>로 업로드해주세요.</strong></li>
-            <li><strong><span style="color:#0d6efd;">5문단</span> 이상의 <span style="color:#0d6efd;"><strong>프로젝트 스토리</strong></span>를 작성해주세요.</strong></li>
+    <div style='
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    '>
+        <img 
+            src='data:image/png;base64,{base64.b64encode(open("assets/title_image.png", "rb").read()).decode()}'
+            style='
+                width: 100%;
+                max-width: 860px;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            '
+        >
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 사용 가이드 박스
+    st.markdown(f"""
+    <div style='
+        padding: 25px 30px;
+        border-left: 6px solid #ffc107;
+        background-color: #fffbea;
+        border-radius: 12px;
+        margin-bottom: 30px;
+    '>
+        <h3 style='margin-top: 0;'>📝 사용 가이드</h3>
+        <ul style='padding-left: 1.2rem; font-size: 1.05rem; color: #343a40; line-height: 1.7;'>
+            <li><strong>발표자료를 <span style="color:#0d6efd;">PDF 파일</span>로 업로드해주세요.</strong></li>
+            <li><strong><span style="color:#0d6efd;">5문단</span> 이상의 <span style="color:#0d6efd;">프로젝트 스토리</span>를 작성해주세요.</strong></li>
             <li><strong>입력하시는 <span style="color:#0d6efd;">프로젝트의 스토리가 구체적일수록</span> 대본의 퀄리티가 올라갑니다.</strong></li>
-            <li><strong>강조하고 싶은 단어는 <span style="color:#dc3545;"><strong>쉼표(,)</strong></span>로 구분하여 입력해주세요.</strong></li>
-            <li><strong><span style="color:#fd7e14;">내용이 없는 파티션 슬라이드</span>는 제거해주세요.</strong></li>
-            <li><strong>스크립트 생성에는 발표자료의 길이에 따라 <span style="color:#198754;">다소 시간(수 분 가량)</span>이 소요될 수 있습니다.</strong></li>
+            <li><strong>강조하고 싶은 단어는 <span style="color:#0d6efd;">쉼표(,)</span>로 구분하여 입력해주세요.</strong></li>
+            <li><strong><span style="color:#0d6efd;">내용이 없는 파티션 슬라이드(간지)</span>는 제거해주세요.</strong></li>
+            <li><strong>스크립트 생성에는 발표자료의 길이에 따라 <span style="color:#0d6efd;">다소 시간(수 분 가량)</span>이 소요될 수 있습니다.</strong></li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
 
-    st.divider()
-    if st.button(":loudspeaker: 발표하러 가기"):
-        st.session_state.app_page = "presentation"
-        st.session_state.current_page = 1
-        st.session_state.current_slide = 0
-        st.rerun()
+    # 스타일 적용 (버튼 텍스트 크기, 여백, 색상 등)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("📢 발표하러 가기", key="start_presentation"):
+            st.session_state.app_page = "presentation"
+            st.session_state.current_page = 1
+            st.session_state.current_slide = 0
+            st.rerun()
+
+    # 커스터마이즈 스타일
+    st.markdown("""
+    <style>
+    div.stButton > button:first-child {
+        background: linear-gradient(135deg, #6f42c1, #b07dfb);
+        color: white;
+        font-size: 1.3rem;
+        font-weight: 600;
+        padding: 16px 36px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.2s ease-in-out;
+    }
+    div.stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    }
+    div.stButton {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 def render_presentation_workflow():
     font_path = get_korean_font()
