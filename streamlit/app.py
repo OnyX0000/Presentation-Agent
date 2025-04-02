@@ -217,7 +217,6 @@ def render_home_page():
             <li><strong>입력하시는 <span style="color:#ff0000;">프로젝트의 스토리가 구체적일수록</span> 대본의 퀄리티가 올라갑니다.</strong></li>
             <li><strong>강조하고 싶은 단어는 <span style="color:#ff0000;">쉼표(,)</span>로 구분하여 입력해주세요.</strong></li>
             <li><strong><span style="color:#ff0000;">내용이 없는 파티션 슬라이드(간지)</span>는 제거해주세요.</strong></li>
-            <li><strong>스크립트 생성에는 발표자료의 길이에 따라 <span style="color:#ff0000;">다소 시간(수 분 가량)</span>이 소요될 수 있습니다.</strong></li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
