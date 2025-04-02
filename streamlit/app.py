@@ -216,7 +216,7 @@ def render_presentation_workflow():
                 st.session_state.pdf_bytes = uploaded_file.read()
                 doc = fitz.open(stream=st.session_state.pdf_bytes, filetype="pdf")
                 st.session_state.total_pages = len(doc)
-                st.success(f"PDF 업로드 완료 ({st.session_state.total_pages}페이지)")
+                st.success(f"👏🏻 PDF 업로드 완료 ({st.session_state.total_pages}페이지)")
 
             st.markdown("<div style='font-weight:bold; margin-bottom: 0.002px;'>📖 프로젝트 스토리 입력</div>", unsafe_allow_html=True)
             st.session_state.full_document = st.text_area(
@@ -314,7 +314,7 @@ def render_presentation_workflow():
             edited_script = st.text_area(label="", value=current_script, height=150, key=f"script_{page_num}")
             if edited_script != current_script:
                 st.session_state.scripts[page_num] = edited_script
-                st.success("스크립트가 수정되었습니다!")
+                st.success("❗스크립트가 수정되었습니다!")
 
             audio_b64 = st.session_state.tts_audios.get(str(page_num)) if isinstance(st.session_state.tts_audios, dict) else None
             if audio_b64:
