@@ -30,6 +30,7 @@ class ScriptGenerator:
 
         for page_idx, page in enumerate(self.docs):
             text = preprocess_text(page.get_text())
+            print(f"[TEXT] {text}")
             image_description = self._image_process(page, text)
             script = self.generate_script(page_idx, text, image_description, total_pages)
 
@@ -40,7 +41,7 @@ class ScriptGenerator:
                 "script": script
             })
 
-            print(f"[PAGE {page_idx + 1}] {script}")
+            print(f"[{page_idx + 1}PAGE] {script}")
 
         print("[PROCESS] 전체 완료")
         return self.pdf_data
@@ -96,7 +97,7 @@ class ScriptGenerator:
             "previous_summary": previous_summary
         }
 
-        print(f"[SCRIPT] 페이지 {page_idx + 1} 대본 생성")
+        # print(f"[SCRIPT] 페이지 {page_idx + 1} 대본 생성")
         return self.page_script_llm.invoke(inputs)
     
 
