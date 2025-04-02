@@ -123,8 +123,42 @@ def show_chat_interface():
 
             # 이전 질문-답변 출력
             for chat in st.session_state.chat_history:
-                st.markdown(f"**🙋 사용자:** {chat['question']}")
-                st.markdown(f"**🤖 챗봇:** {chat['answer']}")
+                # 사용자 메시지 (오른쪽 정렬)
+                st.markdown(f"""
+                <div style="text-align: right; margin: 10px 0;">
+                    <div style="
+                        display: inline-block;
+                        background-color: #d1e7dd;
+                        color: black;
+                        padding: 10px 15px;
+                        border-radius: 15px;
+                        border-bottom-right-radius: 0;
+                        max-width: 70%;
+                        font-size: 0.95rem;
+                    ">
+                        {chat['question']}
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+                # 챗봇 메시지 (왼쪽 정렬, '챗봇' 라벨 포함)
+                st.markdown(f"""
+                <div style="text-align: left; margin: 10px 0;">
+                    <div style="font-size: 0.90rem; color: #000000; margin-left: 5px; margin-bottom: 3px;">AI오인용</div>
+                    <div style="
+                        display: inline-block;
+                        background-color: #ffffff;
+                        color: black;
+                        padding: 10px 15px;
+                        border-radius: 15px;
+                        border-bottom-left-radius: 0;
+                        max-width: 70%;
+                        font-size: 0.95rem;
+                    ">
+                        {chat['answer']}
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
 
             # 질문 입력
             user_question = st.chat_input("질문을 입력하세요")
