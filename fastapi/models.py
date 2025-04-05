@@ -35,7 +35,7 @@ image_model_params = {
 }
 
 page_script_model_params = {
-    "model": "gpt-4o-mini",
+    "model": "gpt-4o",
     "temperature": 0.6,
     "timeout": 60,
 }
