@@ -1,6 +1,6 @@
 *.pdf
 .env
-*.txt
+data/*./txt
 *.pptx
 model/ 
 *.sqlite3

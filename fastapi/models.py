@@ -3,6 +3,7 @@ from langchain.chains import ConversationChain
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain.memory.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
@@ -45,7 +46,16 @@ chat_model_params = {
     "temperature": 0.0,
     "timeout": 60,
 }
-
+gemini_params = {
+    "model": "gemini-2.0-flash",
+    "temperature": 0.3,
+    "max_output_tokens": 1024,
+    "callbacks": None,
+    "request_timeout": 60,
+    "max_retries": 3,
+    "retry_delay": 10,
+    "cache": False
+}
 # tool 추가
 ddg_search = DuckDuckGoSearchRun()
 search_tool = Tool(
@@ -57,7 +67,7 @@ search_tool = Tool(
 class GPTModel():
     def __init__(self, prompt_path, output_parser, model_params, use_memory=False):
         self.prompt_path = prompt_path
-        self.llm = ChatOpenAI(**model_params)
+        self.llm = ChatGoogleGenerativeAI(**model_params)
         self.output_parser = output_parser
         self.use_memory = use_memory
         self.memory = None
@@ -277,7 +287,16 @@ class Chatbot:
 
 class TTS_LLM:
     def __init__(self, voice_name):
-        self.client = tts.TextToSpeechClient()
+        import os
+        from google.oauth2 import service_account
+        
+        # 환경 변수에서 인증 파일 경로를 가져옵니다
+        credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+        if not credentials_path:
+            raise ValueError("GOOGLE_APPLICATION_CREDENTIALS 환경 변수가 설정되지 않았습니다.")
+            
+        credentials = service_account.Credentials.from_service_account_file(credentials_path)
+        self.client = tts.TextToSpeechClient(credentials=credentials)
         self.voice = tts.VoiceSelectionParams(
             language_code="ko-KR",
             name=voice_name
@@ -298,7 +317,7 @@ WOMAN_TTS = TTS_LLM(voice_name="ko-KR-Wavenet-A")
 VISION_LLM  = ImageDescriptAI(
     prompt_path="prompts/image_script.prompt",
     output_parser=PydanticOutputParser(pydantic_object=ImageCategory),
-    model_params=image_model_params,
+    model_params=gemini_params,
     use_memory=False
 )
 
@@ -309,7 +328,7 @@ PAGE_SCRIPT_LLM = PageScriptAI(
         "end": "prompts/end_script.prompt"
     },
     output_parser=StrOutputParser(),
-    model_params=page_script_model_params,
+    model_params=gemini_params,
     use_memory=True
 )
 
