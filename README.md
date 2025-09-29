@@ -4,6 +4,10 @@ AI 발표 자동화 시스템
 
 ---
 
+발표자료 링크(Canva) : [[[https://www.canva.com/design/DAGm2FBkNCA/_2F5ffQoJRMfjoidKDWaSQ/view?utm_content=DAGm2FBkNCA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8e6b62348e](https://www.canva.com/design/DAGpFri1Psc/8Qdu-G4EM12JpsM9bEOmXg/view?utm_content=DAGpFri1Psc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h09cc5a9eb8)]](https://www.canva.com/design/DAGjSIHYGjg/tXlSwzYHDvCxF4TbgYUYjg/view?utm_content=DAGjSIHYGjg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbb05f20256)
+
+---
+
 ## 🔍 프로젝트 소개
 
 **Presentation-Agent**는 발표 준비 과정에서 느끼는 불안과 스트레스를 줄이기 위해,  
