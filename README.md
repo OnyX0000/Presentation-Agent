@@ -4,7 +4,7 @@ AI 발표 자동화 시스템
 
 ---
 
-발표자료 링크(Canva) : [[(https://www.canva.com/design/DAGjSIHYGjg/tXlSwzYHDvCxF4TbgYUYjg/view?utm_content=DAGjSIHYGjg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbb05f20256)]]
+발표자료 링크(Canva) : [https://www.canva.com/design/DAGjSIHYGjg/tXlSwzYHDvCxF4TbgYUYjg/view?utm_content=DAGjSIHYGjg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hbb05f20256]
 
 ---
 
